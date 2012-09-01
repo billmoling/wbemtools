@@ -1,0 +1,10 @@
+In order to run the NUnit tests, create a file in bin/Debug called wbemsharptest.conf
+
+The file is one line of values separated by spaces.
+IE [host] [user] [password] [namespace]
+
+192.168.0.1 root password root/cimv2
+
+NUnit reads this file and uses the values in testing.
+
+

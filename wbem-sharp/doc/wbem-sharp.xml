@@ -1,0 +1,2431 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>wbem-sharp</name>
+    </assembly>
+    <members>
+        <member name="P:Wbem.Batch.SingleRequest.Namespace">
+            <summary>
+            Temporarily Overrides the default Namespace
+            </summary>
+        </member>
+        <member name="P:Wbem.Batch.SingleRequest.ReqType">
+            <summary>
+            Type of Operation
+            </summary>
+        </member>
+        <member name="P:Wbem.AssociatorNamesOpSettings.ObjectName">
+            <summary>
+            <para>From DMTF Spec:</para>The ObjectName input parameter defines the source CIM Object whose associated names are to be returned. This is either a Class name or Instance name (model path).
+            </summary>
+        </member>
+        <member name="P:Wbem.AssociatorNamesOpSettings.AssocClass">
+            <summary>
+            <para>From DMTF Spec:</para>The AssocClass input parameter, if not NULL, MUST be a valid CIM Association Class name. It acts as a filter on the returned set of names by mandating that each returned name identifies an Object that MUST be associated to the source Object via an Instance of this Class or one of its subclasses.
+            </summary>
+        </member>
+        <member name="P:Wbem.AssociatorNamesOpSettings.ResultClass">
+            <summary>
+            <para>From DMTF Spec:</para>The ResultClass input parameter, if not NULL, MUST be a valid CIM Class name. It acts as a filter on the returned set of names by mandating that each returned name identifies an Object that MUST be either an Instance of this Class (or one of its subclasses) or be this Class (or one of its subclasses).
+            </summary>
+        </member>
+        <member name="P:Wbem.AssociatorNamesOpSettings.Role">
+            <summary>
+            <para>From DMTF Spec:</para>The Role input parameter, if not NULL, MUST be a valid Property name. It acts as a filter on the returned set of names by mandating that each returned name identifies an Object that MUST be associated to the source Object via an Association in which the source Object plays the specified role (i.e. the name of the Property in the Association Class that refers to the source Object MUST match the value of this parameter).
+            </summary>
+        </member>
+        <member name="P:Wbem.AssociatorNamesOpSettings.ResultRole">
+            <summary>
+            <para>From DMTF Spec:</para>The ResultRole input parameter, if not NULL, MUST be a valid Property name. It acts as a filter on the returned set of names by mandating that each returned name identifies an Object that MUST be associated to the source Object via an Association in which the named returned Object plays the specified role (i.e. the name of the Property in the Association Class that refers to the returned Object MUST match the value of this parameter).
+            </summary>
+        </member>
+        <member name="P:Wbem.AssociatorNamesWithClassNameOpSettings.ClassName">
+            <summary>
+            <para>From DMTF Spec:</para>The ObjectName input parameter defines the source CIM Object whose associated names are to be returned. This is either a Class name or Instance name (model path).
+            </summary>
+        </member>
+        <member name="P:Wbem.AssociatorNamesWithInstanceNameOpSettings.InstanceName">
+            <summary>
+            <para>From DMTF Spec:</para>The ObjectName input parameter defines the source CIM Object whose associated names are to be returned. This is either a Class name or Instance name (model path).
+            </summary>
+        </member>
+        <member name="M:Wbem.CimXml.CreateRequest.GetClass(Wbem.CimXml.CimXmlWriter,Wbem.GetClassOpSettings,Wbem.CimName)">
+            <summary>
+            <para>From DMTF Spec:</para>This operation is used to return a single CIM Class from the target Namespace.
+            </summary>
+            <param name="settings"></param>
+            <param name="defaultNamespace"></param>
+            <returns>The CimXml request as a string.</returns>
+        </member>
+        <member name="M:Wbem.CimXml.CreateRequest.GetInstance(Wbem.CimXml.CimXmlWriter,Wbem.GetInstanceOpSettings,Wbem.CimName)">
+            <summary>
+            <para>From DMTF Spec:</para>This operation is used to return a single CIM Instance from the target Namespace.
+            </summary>
+            <param name="settings"></param>
+            <param name="defaultNamespace"></param>
+            <returns>The CimXml request as a string.</returns>
+        </member>
+        <member name="M:Wbem.CimXml.CreateRequest.DeleteClass(Wbem.CimXml.CimXmlWriter,Wbem.DeleteClassOpSettings,Wbem.CimName)">
+            <summary>
+            <para>From DMTF Spec:</para>This operation is used to delete a single CIM Class from the target Namespace.
+            </summary>
+            <param name="settings"></param>
+            <param name="defaultNamespace"></param>
+            <returns>The CimXml request as a string.</returns>
+        </member>
+        <member name="M:Wbem.CimXml.CreateRequest.DeleteInstance(Wbem.CimXml.CimXmlWriter,Wbem.DeleteInstanceOpSettings,Wbem.CimName)">
+            <summary>
+            <para>From DMTF Spec:</para>This operation is used to delete a single CIM Instance from the target Namespace.
+            </summary>
+            <param name="settings"></param>
+            <param name="defaultNamespace"></param>
+            <returns>The CimXml request as a string.</returns>
+        </member>
+        <member name="M:Wbem.CimXml.CreateRequest.CreateClass(Wbem.CimXml.CimXmlWriter,Wbem.CreateClassOpSettings,Wbem.CimName)">
+            <summary>
+            <para>From DMTF Spec:</para>This operation is used to create a single CIM Class in the target Namespace. The Class MUST NOT already exist.
+            </summary>
+            <param name="settings"></param>
+            <param name="defaultNamespace"></param>
+            <returns>The CimXml request as a string.</returns>
+        </member>
+        <member name="M:Wbem.CimXml.CreateRequest.CreateInstance(Wbem.CimXml.CimXmlWriter,Wbem.CreateInstanceOpSettings,Wbem.CimName)">
+            <summary>
+            <para>From DMTF Spec:</para>This operation is used to create a single CIM Instance in the target Namespace. The Instance MUST NOT already exist.
+            </summary>
+            <param name="settings"></param>
+            <param name="defaultNamespace"></param>
+            <returns>The CimXml request as a string.</returns>
+        </member>
+        <member name="M:Wbem.CimXml.CreateRequest.ModifyClass(Wbem.CimXml.CimXmlWriter,Wbem.ModifyClassOpSettings,Wbem.CimName)">
+            <summary>
+            <para>From DMTF Spec:</para>This operation is used to modify an existing CIM Class in the target Namespace. The Class MUST already exist.
+            </summary>
+            <param name="settings"></param>
+            <param name="defaultNamespace"></param>
+            <returns>The CimXml request as a string.</returns>
+        </member>
+        <member name="M:Wbem.CimXml.CreateRequest.ModifyInstance(Wbem.CimXml.CimXmlWriter,Wbem.ModifyInstanceOpSettings,Wbem.CimName)">
+            <summary>
+            <para>From DMTF Spec:</para>This operation is used to modify an existing CIM Instance in the target Namespace. The Instance MUST already exist.
+            </summary>
+            <param name="settings"></param>
+            <param name="defaultNamespace"></param>
+            <returns>The CimXml request as a string.</returns>
+        </member>
+        <member name="M:Wbem.CimXml.CreateRequest.EnumerateClasses(Wbem.CimXml.CimXmlWriter,Wbem.EnumerateClassesOpSettings,Wbem.CimName)">
+            <summary>
+            <para>From DMTF Spec:</para>This operation is used to enumerate subclasses of a CIM Class in the target Namespace.
+            </summary>
+            <param name="settings"></param>
+            <param name="defaultNamespace"></param>
+            <returns>The CimXml request as a string.</returns>
+        </member>
+        <member name="M:Wbem.CimXml.CreateRequest.EnumerateClassNames(Wbem.CimXml.CimXmlWriter,Wbem.EnumerateClassNamesOpSettings,Wbem.CimName)">
+            <summary>
+            <para>From DMTF Spec:</para>This operation is used to enumerate the names of subclasses of a CIM Class in the target Namespace.
+            </summary>
+            <param name="defaultNamespace"></param>
+            <returns>The CimXml request as a string.</returns>
+        </member>
+        <member name="M:Wbem.CimXml.CreateRequest.EnumerateInstances(Wbem.CimXml.CimXmlWriter,Wbem.EnumerateInstancesOpSettings,Wbem.CimName)">
+            <summary>
+            <para>From DMTF Spec:</para>This operation is used to enumerate instances of a CIM Class (this includes instances in the class and any subclasses in accordance with the polymorphic nature of CIM objects) in the target Namespace.
+            </summary>
+            <param name="defaultNamespace"></param>
+            <returns>The CimXml request as a string.</returns>
+        </member>
+        <member name="M:Wbem.CimXml.CreateRequest.EnumerateInstanceNames(Wbem.CimXml.CimXmlWriter,Wbem.EnumerateInstanceNamesOpSettings,Wbem.CimName)">
+            <summary>
+            <para>From DMTF Spec:</para>This operation is used to enumerate the names (model paths) of the instances of a CIM Class (this includes instances in the class and any subclasses in accordance with the polymorphic nature of CIM objects) in the target Namespace.
+            </summary>
+            <param name="defaultNamespace"></param>
+            <returns>The CimXml request as a string.</returns>
+        </member>
+        <member name="M:Wbem.CimXml.CreateRequest.GetProperty(Wbem.CimXml.CimXmlWriter,Wbem.GetPropertyOpSettings,Wbem.CimName)">
+            <summary>
+            Get the value of a property of an InstanceName
+            </summary>
+            <param name="cxw"></param>
+            <param name="settings"></param>
+            <param name="defaultNamespace"></param>
+        </member>
+        <member name="M:Wbem.CimXml.CreateRequest.SetProperty(Wbem.CimXml.CimXmlWriter,Wbem.SetPropertyOpSettings,Wbem.CimName)">
+            <summary>
+            Sets the value of a property on the Cimom
+            </summary>
+            <param name="cxw"></param>
+            <param name="settings"></param>
+            <param name="defaultNamespace"></param>
+        </member>
+        <member name="T:Wbem.CimQualifier">
+            <summary>
+            A qualifer can have an array or non-array type, and corresponding value array or single value
+            </summary>
+        </member>
+        <member name="M:Wbem.CimQualifier.#ctor(Wbem.CimType,System.String)">
+            <summary>
+            Creates a CimQualifier object with the type and name
+            </summary>
+            <param name="type">CimType of the qualifier</param>
+            <param name="name">Name of the qualifier</param>
+        </member>
+        <member name="M:Wbem.CimQualifier.#ctor(Wbem.CimType,Wbem.CimName)">
+            <summary>
+            Creates a CimQualifier object with the type and name
+            </summary>
+            <param name="type">CimType of the qualifier</param>
+            <param name="name">Name of the qualifier</param>
+        </member>
+        <member name="P:Wbem.CimQualifier.Name">
+            <summary>
+            Gets or sets the name of the CimQualifier object
+            </summary>
+        </member>
+        <member name="P:Wbem.CimQualifier.IsPropagated">
+            <summary>
+            Gets or sets the flag that designates this qualifier as propagated
+            </summary>
+        </member>
+        <member name="P:Wbem.CimQualifier.Type">
+            <summary>
+            Gets or sets the CimType of this qualifier
+            </summary>
+        </member>
+        <member name="P:Wbem.CimQualifier.Values">
+            <summary>
+            Gets or sets the values of the property
+            </summary>
+        </member>
+        <member name="P:Wbem.CimQualifier.Flavor">
+            <summary>
+            Gets or sets the qualifier flavor for the qualifier
+            </summary>
+        </member>
+        <member name="P:Wbem.CimQualifier.IsSet">
+            <summary>
+            Returns true if the name and type are set
+            </summary>
+        </member>
+        <member name="P:Wbem.CimQualifier.HasValueArray">
+            <summary>
+            Returns true if the qualifier has a ValueArray, else just a single Value
+            </summary>
+        </member>
+        <member name="T:Wbem.CimPropertyArray">
+            <summary>
+            A single property with an array type. 
+            </summary>
+        </member>
+        <member name="T:Wbem.CimProperty">
+            <summary>
+            The PROPERTY element defines a single (non-array) CIM Property that is not a reference. 
+            It contains a single value of the Property.
+            </summary>
+        </member>
+        <member name="T:Wbem.CimClassMember">
+            <summary>
+            Abstract parent class of a CimProperty or a CimMethod, and include the common attributes of both sub classes
+            </summary>
+        </member>
+        <member name="P:Wbem.CimClassMember.Name">
+            <summary>
+            Gets or set the name of the property
+            </summary>
+        </member>
+        <member name="P:Wbem.CimClassMember.ClassOrigin">
+            <summary>
+            Gets or sets the name of the class that the CimMember object belongs to.
+            </summary>
+        </member>
+        <member name="P:Wbem.CimClassMember.Type">
+            <summary>
+            Gets or sets the NullableCimType of the CimMember object
+            </summary>
+        </member>
+        <member name="P:Wbem.CimClassMember.Qualifiers">
+            <summary>
+            Gets or sets the CimQualifiers of the CimProperty object
+            </summary>
+        </member>
+        <member name="P:Wbem.CimClassMember.IsPropagated">
+            <summary>
+            Gets or sets the flag indicating whether or not this property is propagated
+            </summary>
+        </member>
+        <member name="M:Wbem.CimProperty.#ctor(Wbem.CimName,Wbem.CimType)">
+            <summary>
+            Creates a new property with the given name and type
+            </summary>
+            <param name="name"></param>
+            <param name="type"></param>
+        </member>
+        <member name="M:Wbem.CimProperty.ToCimKeyBinding">
+            <summary>
+            Converts the property to a CimKeyBinding
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wbem.CimProperty.Equals(System.Object)">
+            <summary>
+            Deep compare of two CimProperty objects
+            </summary>
+            <param name="obj"></param>
+            <returns>returns true if the objects are equal</returns>
+        </member>
+        <member name="M:Wbem.CimProperty.op_Equality(Wbem.CimProperty,Wbem.CimProperty)">
+            <summary>
+            Deep compare of two CimProperty objects
+            </summary>
+            <param name="val1"></param>
+            <param name="val2"></param>
+            <returns>Returns true if the properties are equal</returns>
+        </member>
+        <member name="M:Wbem.CimProperty.op_Inequality(Wbem.CimProperty,Wbem.CimProperty)">
+            <summary>
+            Deep compare of two CimProperty objects
+            </summary>
+            <param name="val1"></param>
+            <param name="val2"></param>
+            <returns>Returns true if the properties are not equal</returns>
+        </member>
+        <member name="P:Wbem.CimProperty.Value">
+            <summary>
+            Gets or sets the value of the property
+            </summary>
+        </member>
+        <member name="P:Wbem.CimProperty.IsKeyProperty">
+            <summary>
+            Returns true if the property has a key qualifier and the key qualifier is set to 'true'
+            </summary>
+        </member>
+        <member name="P:Wbem.CimProperty.IsRequiredProperty">
+            <summary>
+            Returns true if the property has a required qualifier and the required qualifier is set to 'true'
+            </summary>
+        </member>
+        <member name="P:Wbem.CimProperty.IsSet">
+            <summary>
+            Returns true if the property name, type, and value are set
+            </summary>
+        </member>
+        <member name="M:Wbem.CimPropertyArray.#ctor(Wbem.CimName,Wbem.CimType)">
+            <summary>
+            Creates a new CimPropertyArray with the given name and type
+            </summary>
+            <param name="name"></param>
+            <param name="type"></param>
+        </member>
+        <member name="P:Wbem.CimPropertyArray.ArraySize">
+            <summary>
+            Gets or sets the size of the array
+            </summary>
+        </member>
+        <member name="P:Wbem.CimPropertyArray.ValueArray">
+            <summary>
+            Gets or sets the values of the property
+            </summary>
+        </member>
+        <member name="T:Wbem.CimParameterArray">
+            <summary>
+            A single parameter to a CimMethod that has an array type
+            </summary>
+        </member>
+        <member name="T:Wbem.CimParameter">
+            <summary>
+            A single CIM parameter
+            </summary>
+        </member>
+        <member name="M:Wbem.CimParameter.#ctor(Wbem.CimType,Wbem.CimName)">
+            <summary>
+            Creates a new CIMParameter with the given name and type
+            </summary>
+            <param name="type"></param>
+            <param name="name"></param>
+        </member>
+        <member name="M:Wbem.CimParameter.Equals(System.Object)">
+            <summary>
+            Deep compare of two CimParamter objects
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wbem.CimParameter.op_Equality(Wbem.CimParameter,Wbem.CimParameter)">
+            <summary>
+            Deep compare of two CimParameter objects
+            </summary>
+            <param name="val1"></param>
+            <param name="val2"></param>
+            <returns>Returns true if the parameters have the same values</returns>
+        </member>
+        <member name="M:Wbem.CimParameter.op_Inequality(Wbem.CimParameter,Wbem.CimParameter)">
+            <summary>
+            Deep compare of two CimParameter objects
+            </summary>
+            <param name="val1"></param>
+            <param name="val2"></param>
+            <returns>Returns true if the parameters do not have the same values</returns>
+        </member>
+        <member name="P:Wbem.CimParameter.Name">
+            <summary>
+            Gets or sets the name of the parameter
+            </summary>
+        </member>
+        <member name="P:Wbem.CimParameter.Type">
+            <summary>
+            Gets or sets the type of the parameter
+            </summary>
+        </member>
+        <member name="P:Wbem.CimParameter.Qualifiers">
+            <summary>
+            Gets or set the _qualifiers for this parameter
+            </summary>
+        </member>
+        <member name="P:Wbem.CimParameter.IsSet">
+            <summary>
+            Returns true if the name property is set
+            </summary>
+        </member>
+        <member name="M:Wbem.CimParameterArray.#ctor(Wbem.CimType,System.String)">
+            <summary>
+            Creates a new CimParameterArray with the given name and type
+            </summary>
+            <param name="type"></param>
+            <param name="name"></param>
+        </member>
+        <member name="M:Wbem.CimParameterArray.#ctor(Wbem.CimType,Wbem.CimName)">
+            <summary>
+            Creates a new CimParameterArray with the given name and type
+            </summary>
+            <param name="type"></param>
+            <param name="name"></param>
+        </member>
+        <member name="P:Wbem.CimParameterArray.ArraySize">
+            <summary>
+            Gets or sets the size of the array
+            </summary>
+        </member>
+        <member name="T:Wbem.NullableBool">
+            <summary>
+            A value type of type bool that can also be set to null
+            </summary>
+        </member>
+        <member name="M:Wbem.BaseDataTypes.BaseNullable`1.op_Equality(Wbem.BaseDataTypes.BaseNullable{`0},System.Object)">
+            <summary>
+            Compare a NullableInt object and an object
+            </summary>
+            <param name="lhs">NullableInt object</param>
+            <param name="rhs">object value</param>
+            <returns>Returns true if the values are the same</returns>
+        </member>
+        <member name="M:Wbem.BaseDataTypes.BaseNullable`1.op_Inequality(Wbem.BaseDataTypes.BaseNullable{`0},System.Object)">
+            <summary>
+            Compare a NullableInt object and an object
+            </summary>
+            <param name="lhs">NullableInt object</param>
+            <param name="rhs">object value</param>
+            <returns>Returns true if the values are not the same</returns>
+        </member>
+        <member name="P:Wbem.BaseDataTypes.BaseNullable`1.Value">
+            <summary>
+            Gets or sets the Value
+            </summary>
+        </member>
+        <member name="P:Wbem.BaseDataTypes.BaseNullable`1.IsSet">
+            <summary>
+            Returns true if the value is not null
+            </summary>
+        </member>
+        <member name="M:Wbem.NullableBool.#ctor">
+            <summary>
+            Creates a default NullableBool
+            </summary>
+        </member>
+        <member name="M:Wbem.NullableBool.#ctor(System.Boolean)">
+            <summary>
+            Allows you to set a default value. If the default value is set, then if the variable is null, 
+            it is also equal to the default value.
+            </summary>
+            <param name="defaultValue"></param>
+        </member>
+        <member name="M:Wbem.NullableBool.#ctor(System.String)">
+            <summary>
+            Allows you to set a default value. If the default value is set, then if the variable is null, 
+            it is also equal to the default value.
+            </summary>
+            <param name="defaultValue"></param>
+        </member>
+        <member name="M:Wbem.NullableBool.ToString">
+            <summary>
+            Returns the string of the NullableBool object.
+            </summary>
+            <returns>string</returns>
+        </member>
+        <member name="M:Wbem.NullableBool.ToBool">
+            <summary>
+            Converts to a regular bool type
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wbem.NullableBool.Equals(System.Object)">
+            <summary>
+            Compares the values of two NullableBool objects
+            </summary>
+            <param name="obj">object to compare</param>
+            <returns>True if the values of the NullableBool objects are equal</returns>
+        </member>
+        <member name="M:Wbem.NullableBool.op_Implicit(System.String)~Wbem.NullableBool">
+            <summary>
+            Implicitly convert from a string to NullableBool.
+            </summary>
+            <param name="value">String to convert</param>
+            <returns>NullableBool</returns>
+        </member>
+        <member name="M:Wbem.NullableBool.op_Implicit(System.Nullable{System.Boolean})~Wbem.NullableBool">
+            <summary>
+            Implicitly convert from a bool? to NullableBool.
+            </summary>
+            <param name="value">bool? to convert</param>
+            <returns>NullableBool</returns>
+        </member>
+        <member name="P:Wbem.NullableBool.DefaultValue">
+            <summary>
+            Gets or sets the default value of the NullableBool
+            </summary>
+        </member>
+        <member name="T:Wbem.CimReturnValue">
+            <summary>
+            Specifies the value returned from an extrinsic method call. 
+            </summary>
+        </member>
+        <member name="M:Wbem.CimReturnValue.#ctor">
+            <summary>
+            Creates an empty CimReturnValue object
+            </summary>
+        </member>
+        <member name="M:Wbem.CimReturnValue.#ctor(Wbem.NullableCimType,System.String)">
+            <summary>
+            Creates a CimReturnValue with the given type and value
+            </summary>
+            <param name="type"></param>
+            <param name="val"></param>
+        </member>
+        <member name="P:Wbem.CimReturnValue.Type">
+            <summary>
+            Gets or sets the type of the parameter
+            </summary>
+        </member>
+        <member name="P:Wbem.CimReturnValue.Value">
+            <summary>
+            Gets or sets the value
+            </summary>
+        </member>
+        <member name="P:Wbem.CimReturnValue.ValueReference">
+            <summary>
+            Gets or sets the value reference
+            </summary>
+        </member>
+        <member name="T:Wbem.CimInstancePath">
+            <summary>
+            The InstancePath defines the absolute path to a CIM Instance.
+            </summary>
+        </member>
+        <member name="T:Wbem.CimObjectPath">
+            <summary>
+            Abstract class that contains a NamespacePath and a Host
+            </summary>
+        </member>
+        <member name="P:Wbem.CimObjectPath.NamespacePath">
+            <summary>
+            Gets or sets the Namespacepath
+            </summary>
+        </member>
+        <member name="P:Wbem.CimObjectPath.Host">
+            <summary>
+            Gets or sets the CimHost
+            </summary>
+        </member>
+        <member name="P:Wbem.CimObjectPath.Namespace">
+            <summary>
+            Gets or sets the Namespace
+            </summary>
+        </member>
+        <member name="P:Wbem.CimObjectPath.IsLocalPath">
+            <summary>
+            Returns true if the host name is not set
+            </summary>
+        </member>
+        <member name="P:Wbem.CimInstancePath.Instance">
+            <summary>
+            Gets or sets the Instance
+            </summary>
+        </member>
+        <member name="P:Wbem.CimInstancePath.IsSet">
+            <summary>
+            Returns true if the namespace path is set and the instance does equal null.
+            </summary>
+        </member>
+        <member name="T:Wbem.CimClassNamePath">
+            <summary>
+            Includes a CimName, NamespacePath, and a Host
+            </summary>
+        </member>
+        <member name="M:Wbem.CimClassNamePath.#ctor">
+            <summary>
+            Creates an empty CimClassNamePath
+            </summary>
+        </member>
+        <member name="M:Wbem.CimClassNamePath.#ctor(Wbem.CimName)">
+            <summary>
+            Creates a CimClassNamePath with a class name
+            </summary>
+            <param name="className"></param>
+        </member>
+        <member name="P:Wbem.CimClassNamePath.ClassName">
+            <summary>
+            Name of the class
+            </summary>
+        </member>
+        <member name="P:Wbem.ModifyInstanceOpSettings.ModifiedInstance">
+            <summary>
+            <para>From DMTF Spec:</para>The ModifiedInstance input parameter identifies the name of the Instance to be modified, and defines the set of changes (which MUST be correct amendments to the Instance as defined by the CIM Specification [1]) to be made to the current Instance definition.
+            </summary>
+        </member>
+        <member name="P:Wbem.ModifyInstanceOpSettings.IncludeQualifiers">
+            <summary>
+            <para>From DMTF Spec:</para>DEPRECATION NOTE: The use of the IncludeQualifiers parameter is DEPRECATED and it may be removed in a future version of this specification. The behavior of the IncludeQualifiers parameter is not specified. A CIM Client can not rely on the IncludeQualifiers to have any impact on the operation. It is RECOMMENDED that the CIM Server ignore any _qualifiers included in the instance. If the IncludeQualifiers input parameter is true, this specifies that the Qualifiers are modified as specified in the ModifiedInstance. If false, Qualifiers in the ModifiedInstance are ignored and no Qualifiers are explicitly modified in the specified Instance.
+            </summary>
+        </member>
+        <member name="P:Wbem.ModifyInstanceOpSettings.PropertyList">
+            <summary>
+            <para>From DMTF Spec:</para>If the PropertyList input parameter is not NULL, the members of the array define one or more Property names. Only those properties specified in the PropertyList are modified as specified in the ModifiedInstance. Properties of the ModifiedInstance that are missing from the PropertyList are ignored. If the PropertyList input parameter is an empty array this signifies that no Properties are explicitly modified in the specified Instance. If the PropertyList input parameter is NULL this specifies that all Properties are updated in the specified Instance.
+            <para />If the PropertyList contains duplicate elements, the Server MUST ignore the duplicates but otherwise process the request normally. If the PropertyList contains elements which are invalid Property names for the target Instance, the Server MUST ignore such entries but otherwise process the request normally.
+            </summary>
+        </member>
+        <member name="P:Wbem.EnumerateInstancesOpSettings.ClassName">
+            <summary>
+            <para>From DMTF Spec:</para>The ClassName input parameter defines the Class that is the basis for the enumeration.
+            </summary>
+        </member>
+        <member name="P:Wbem.EnumerateInstancesOpSettings.LocalOnly">
+            <summary>
+            <para>From DMTF Spec:</para>DEPRECATION NOTE: With the 1.2 release of this specification, the LocalOnly parameter is DEPRECATED. LocalOnly filtering, as defined in 1.1, will not be supported in the next major revision of this specification. In the 1.1 version of this specification, the definition of the LocalOnly parameter was incorrectly modified. This change introduced a number of interoperability and backward compatibility problems for CIM Clients using the LocalOnly parameter to filter the set of Properties returned. The DMTF strongly recommends that CIM Clients set LocalOnly = false and do not rely on the use of this parameter to filter the set of Properties returned. To minimize the impact of implementing this recommendation on CIM Clients, a CIM Server MAY choose to treat the value of the LocalOnly parameter as FALSE for all requests. A CIM Server MUST consistently support a single interpretation of the LocalOnly parameter. Refer to Appendix C for additional details.
+            </summary>
+        </member>
+        <member name="P:Wbem.EnumerateInstancesOpSettings.DeepInheritance">
+            <summary>
+            <para>From DMTF Spec:</para>If the DeepInheritance input parameter is true, this specifies that, for each returned Instance of the Class, all properties of the Instance MUST be present (subject to constraints imposed by the other parameters), including any which were added by subclassing the specified Class. If false, each returned Instance includes only properties defined for the specified Class.
+            </summary>
+        </member>
+        <member name="P:Wbem.EnumerateInstancesOpSettings.IncludeQualifiers">
+            <summary>
+            <para>From DMTF Spec:</para>DEPRECATION NOTE: The use of the IncludeQualifiers parameter is DEPRECATED and it may be removed in a future version of this specification. The IncludeQualifiers parameter definition is ambiguous and when set to true CIM Clients can not be assured of any _qualifiers being returned. A CIM Client SHOULD always set this parameter to false. To minimize the impact of implementing this recommendation on CIM Clients, a CIM Server MAY choose to treat the value of the IncludeQualifiers parameter as FALSE for all requests. The preferred behavior is to use the class operations to receive qualifier information and not depend on any _qualifiers existing in this response. If the IncludeQualifiers input parameter is true, this specifies that all Qualifiers for that Instance (including Qualifiers on the Instance and on any returned Properties) MUST be included as &lt;QUALIFIER&gt; elements in the response. If false no &lt;QUALIFIER&gt; elements are present in the returned Instance.
+            </summary>
+        </member>
+        <member name="P:Wbem.EnumerateInstancesOpSettings.IncludeClassOrigin">
+            <summary>
+            <para>From DMTF Spec:</para>If the IncludeClassOrigin input parameter is true, this specifies that the CLASSORIGIN attribute MUST be present on all appropriate elements in each returned Instance. If false, no CLASSORIGIN attributes are present in each returned Instance.
+            </summary>
+        </member>
+        <member name="P:Wbem.EnumerateInstancesOpSettings.PropertyList">
+            <summary>
+            <para>From DMTF Spec:</para>If the PropertyList input parameter is not NULL, the members of the array define one or more Property names of the designated class. This may include inherited Property names or Property names explicitly defined in the designated class, but MAY NOT include Property names defined in subclasses of the designated class. Each returned Instance MUST NOT include elements for any Properties missing from this list. Note that the PropertyList parameter acts as an additional filter on the Properties defined by the LocalOnly and DeepInheritance input parameters; if the PropertyList includes a Property that is not in the set defined by the LocalOnly and DeepInheritance combination, the element for the Property MUST NOT be returned. If the PropertyList input parameter is an empty array this signifies that no elements for Properties are included in the returned Instances. If the PropertyList input parameter is NULL, no additional filtering is defined by this parameter.
+            <para />If the PropertyList contains duplicate elements, the Server MUST ignore the duplicates but otherwise process the request normally. If the PropertyList contains elements which are invalid Property names for any target Instance, the Server MUST ignore such entries but otherwise process the request normally.
+            </summary>
+        </member>
+        <member name="P:Wbem.DeleteClassOpSettings.ClassName">
+            <summary>
+            <para>From DMTF Spec:</para>The ClassName input parameter defines the name of the Class to be deleted.
+            </summary>
+        </member>
+        <member name="P:Wbem.CreateClassOpSettings.NewClass">
+            <summary>
+            <para>From DMTF Spec:</para>The NewClass input parameter defines the new Class. The proposed definition MUST be a correct Class definition according to the CIM specification [1].
+            </summary>
+        </member>
+        <member name="T:Wbem.CimScope">
+            <summary>
+            Identifies the scope of a qualifier declaration in the case that there are restrictions on the scope of the qualifier declaration
+            </summary>
+        </member>
+        <member name="P:Wbem.CimScope.IsSet">
+            <summary>
+            Returns true if at least one of the scopes is set
+            </summary>
+        </member>
+        <member name="P:Wbem.CimObject.Properties">
+            <summary>
+            Gets the properties of this CimClass object
+            </summary>
+        </member>
+        <member name="P:Wbem.CimObject.Qualifiers">
+            <summary>
+            Gets the _qualifiers of this CimClass object
+            </summary>
+        </member>
+        <member name="P:Wbem.CimObject.HasKeyProperty">
+            <summary>
+            Returns true if the class has a property that is a key property
+            </summary>
+        </member>
+        <member name="P:Wbem.SetQualifierOpSettings.QualifierDeclaration">
+            <summary>
+            <para>From DMTF Spec:</para>The QualifierDeclaration input parameter defines the Qualifier Declaration to be added to the Namespace.
+            </summary>
+        </member>
+        <member name="T:Wbem.CimValueList">
+            <summary>
+            A list of strings representing CimValues
+            </summary>
+        </member>
+        <member name="T:Wbem.BaseDataTypes.BaseDataTypeList`1">
+            <summary>
+            Base data type list for all Cim Collections
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Wbem.BaseDataTypes.BaseCollection`1">
+            <summary>
+            Base collection type for all Cim Collections
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Wbem.BaseDataTypes.BaseCollection`1.#ctor">
+            <summary>
+            Creates an empty collection
+            </summary>
+        </member>
+        <member name="M:Wbem.BaseDataTypes.BaseCollection`1.#ctor(System.Int32)">
+            <summary>
+            Creates an empty collection with a set capacity
+            </summary>
+            <param name="capacity"></param>
+        </member>
+        <member name="M:Wbem.BaseDataTypes.BaseCollection`1.Add(`0)">
+            <summary>
+            Adds an item to the collection
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:Wbem.BaseDataTypes.BaseCollection`1.AddRange(Wbem.BaseDataTypes.BaseCollection{`0})">
+            <summary>
+            Adds the contents of a BaseCollection&lt;T&gt; to the collection
+            </summary>
+            <param name="baseCollection"></param>
+        </member>
+        <member name="M:Wbem.BaseDataTypes.BaseCollection`1.Insert(System.Int32,`0)">
+            <summary>
+            Inserts an item into the collection at the specified index
+            </summary>
+            <param name="index"></param>
+            <param name="item"></param>
+        </member>
+        <member name="M:Wbem.BaseDataTypes.BaseCollection`1.InsertRange(System.Int32,Wbem.BaseDataTypes.BaseCollection{`0})">
+            <summary>
+            Inserts a collection into another collection at the specified index
+            </summary>
+            <param name="index"></param>
+            <param name="baseCollection"></param>
+        </member>
+        <member name="M:Wbem.BaseDataTypes.BaseCollection`1.Remove(`0)">
+            <summary>
+            Removes the specified item from the collection
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:Wbem.BaseDataTypes.BaseCollection`1.RemoveAt(System.Int32)">
+            <summary>
+            Removes an element at the specified index
+            </summary>
+            <param name="index"></param>
+        </member>
+        <member name="M:Wbem.BaseDataTypes.BaseCollection`1.RemoveRange(System.Int32,System.Int32)">
+            <summary>
+            Removes a range of elements from the collection
+            </summary>
+            <param name="index"></param>
+            <param name="count"></param>
+        </member>
+        <member name="P:Wbem.BaseDataTypes.BaseCollection`1.Capacity">
+            <summary>
+            Gets or set the capacity of the collection
+            </summary>
+        </member>
+        <member name="P:Wbem.BaseDataTypes.BaseCollection`1.Count">
+            <summary>
+            Returns the number of items in the collection
+            </summary>
+        </member>
+        <member name="P:Wbem.BaseDataTypes.BaseCollection`1.Item(System.Int32)">
+            <summary>
+            Gets or sets the indexed item in the collection
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Wbem.BaseDataTypes.BaseCollection`1.IsSet">
+            <summary>
+            Returns true if count is greater than zero
+            </summary>
+        </member>
+        <member name="M:Wbem.BaseDataTypes.BaseDataTypeList`1.#ctor">
+            <summary>
+            Creates an empty BaseDataTypeList of type T
+            </summary>
+        </member>
+        <member name="M:Wbem.BaseDataTypes.BaseDataTypeList`1.#ctor(System.Int32)">
+            <summary>
+            Creates an empty BaseDataTypeList of type T with a specified capacity
+            </summary>
+            <param name="capacity"></param>
+        </member>
+        <member name="M:Wbem.BaseDataTypes.BaseDataTypeList`1.#ctor(`0[])">
+            <summary>
+            Creates a BaseDataTypeList with the given items
+            </summary>
+            <param name="items"></param>
+        </member>
+        <member name="M:Wbem.BaseDataTypes.BaseDataTypeList`1.Sort">
+            <summary>
+            Sort the items of the list according to ISortable
+            </summary>
+        </member>
+        <member name="M:Wbem.BaseDataTypes.BaseDataTypeList`1.Sort(System.Comparison{`0})">
+            <summary>
+            Sort the list according to the given Comparison object
+            </summary>
+            <param name="comparison"></param>
+        </member>
+        <member name="M:Wbem.BaseDataTypes.BaseDataTypeList`1.Sort(System.Collections.Generic.IComparer{`0})">
+            <summary>
+            Sort the list according to the given IComparer object
+            </summary>
+            <param name="comparer"></param>
+        </member>
+        <member name="M:Wbem.BaseDataTypes.BaseDataTypeList`1.Sort(System.Int32,System.Int32,System.Collections.Generic.IComparer{`0})">
+            <summary>
+            Sorts a specified range of elements according to the IComparer object
+            </summary>
+            <param name="index">Starting index of the range to sort</param>
+            <param name="count">Number of items in the range</param>
+            <param name="comparer">IComparer object to use to compare</param>
+        </member>
+        <member name="M:Wbem.CimValueList.#ctor">
+            <summary>
+            Creates an empty CimValueList
+            </summary>
+        </member>
+        <member name="M:Wbem.CimValueList.#ctor(System.String[])">
+            <summary>
+            Creates a new CimValueList with the given CimValues (as strings)
+            </summary>
+            <param name="values"></param>
+        </member>
+        <member name="T:Wbem.CimClassNamePathList">
+            <summary>
+            A list of CimClassNamePath objects
+            </summary>
+        </member>
+        <member name="P:Wbem.SetPropertyOpSettings.InstanceName">
+            <summary>
+            <para>From DMTF Spec:</para>The InstanceName input parameter specifies the name of the Instance (model path) for which the Property value is to be updated.
+            </summary>
+        </member>
+        <member name="P:Wbem.SetPropertyOpSettings.PropertyName">
+            <summary>
+            <para>From DMTF Spec:</para>The PropertyName input parameter specifies the name of the Property whose value is to be updated.
+            </summary>
+        </member>
+        <member name="P:Wbem.SetPropertyOpSettings.NewValue">
+            <summary>
+            <para>From DMTF Spec:</para>The NewValue input parameter specifies the new value for the Property (which may be NULL).
+            </summary>
+        </member>
+        <member name="P:Wbem.EnumerateLeafClassesOpSettings.ClassName">
+            <summary>
+            <para>From DMTF Spec:</para>The ClassName input parameter defines the Class that is the basis for the enumeration.
+            </summary>
+        </member>
+        <member name="P:Wbem.EnumerateLeafClassesOpSettings.LocalOnly">
+            <summary>
+            <para>From DMTF Spec:</para>If the LocalOnly input parameter is true, this specifies that only CIM Elements (properties, methods and _qualifiers) defined or overridden within the definition of the Class (as specified in the classname input parameter) are returned. If false, all elements are returned.
+            </summary>
+        </member>
+        <member name="P:Wbem.EnumerateLeafClassesOpSettings.IncludeQualifiers">
+            <summary>
+            <para>From DMTF Spec:</para>If the IncludeQualifiers input parameter is true, this specifies that all Qualifiers for each Class (including Qualifiers on the Class and on any returned Properties, Methods or Method Parameters) MUST be included as &lt;QUALIFIER&gt; elements in the response. If false no &lt;QUALIFIER&gt; elements are present in each returned Class.
+            </summary>
+        </member>
+        <member name="P:Wbem.EnumerateLeafClassesOpSettings.IncludeClassOrigin">
+            <summary>
+            <para>From DMTF Spec:</para>If the IncludeClassOrigin input parameter is true, this specifies that the CLASSORIGIN attribute MUST be present on all appropriate elements in each returned Class. If false, no CLASSORIGIN attributes are present in each returned Class.
+            </summary>
+        </member>
+        <member name="P:Wbem.EnumerateClassNamesOpSettings.ClassName">
+            <summary>
+            <para>From DMTF Spec:</para>The ClassName input parameter defines the Class that is the basis for the enumeration.
+            </summary>
+        </member>
+        <member name="P:Wbem.EnumerateClassNamesOpSettings.DeepInheritance">
+            <summary>
+            <para>From DMTF Spec:</para>If the DeepInheritance input parameter istrue, this specifies that the names of all subclasses of the specified Class should be returned (if the ClassName input parameter is absent, this implies that the names of all Classes in the target Namespace should be returned). If false, only the names of immediate child subclasses are returned (if theClassName input parameter is NULL, this implies that the names of all base Classes in the target Namespace should be returned). This definition of DeepInheritance applies only to the EnumerateClasses and EnumerateClassName operations.
+            </summary>
+        </member>
+        <member name="P:Wbem.DeleteQualifierOpSettings.QualifierName">
+            <summary>
+            <para>From DMTF Spec:</para>The QualifierName input parameter identifies the Qualifier whose declaration to be deleted.
+            </summary>
+        </member>
+        <member name="P:Wbem.DeleteInstanceOpSettings.InstanceName">
+            <summary>
+            <para>From DMTF Spec:</para>The InstanceName input parameter defines the name (model path) of the Instance to be deleted.
+            </summary>
+        </member>
+        <member name="T:Wbem.CimParameterList">
+            <summary>
+            A list CimParameter objects
+            </summary>
+        </member>
+        <member name="M:Wbem.CimParameterList.#ctor">
+            <summary>
+            Creates an empty CimParameterList
+            </summary>
+        </member>
+        <member name="M:Wbem.CimParameterList.#ctor(Wbem.CimParameter[])">
+            <summary>
+            Creates a new CimParameterList with the given CimParameters
+            </summary>
+            <param name="parameters"></param>
+        </member>
+        <member name="M:Wbem.CimParameterList.Remove(Wbem.CimName)">
+            <summary>
+            Removes a CimParameter from the collection, based the the name
+            </summary>
+            <param name="name">Name of the parameter to remove</param>        
+        </member>
+        <member name="M:Wbem.CimParameterList.op_Equality(Wbem.CimParameterList,Wbem.CimParameterList)">
+            <summary>
+            Shallow compare two CimPropertyLists
+            </summary>
+            <param name="list1"></param>
+            <param name="list2"></param>
+            <returns>Returns true if both lists have the same elements with the same names</returns>
+        </member>
+        <member name="M:Wbem.CimParameterList.op_Inequality(Wbem.CimParameterList,Wbem.CimParameterList)">
+            <summary>
+            Shallow compare of two CimPropertyLists
+            </summary>
+            <param name="list1"></param>
+            <param name="list2"></param>
+            <returns>Returns true if the lists do not have the same elements</returns>
+        </member>
+        <member name="M:Wbem.CimParameterList.op_LessThanOrEqual(Wbem.CimParameterList,Wbem.CimParameterList)">
+            <summary>
+            Determines whether a list is a subset of another list (shallow compare)
+            </summary>
+            <param name="list1">Superset list</param>
+            <param name="list2">subset list</param>
+            <returns>Returns true if list1 is a superset of list2</returns>
+        </member>
+        <member name="M:Wbem.CimParameterList.op_GreaterThanOrEqual(Wbem.CimParameterList,Wbem.CimParameterList)">
+            <summary>
+            Determines whether a list is a superset of another list (shallow compare)
+            </summary>
+            <param name="list1">Superset list</param>
+            <param name="list2">subset list</param>
+            <returns>Returns true if list1 is a superset of list2</returns>
+        </member>
+        <member name="M:Wbem.CimParameterList.IsEqualTo(Wbem.CimParameterList)">
+            <summary>
+            Performes a deep compare of two CimPropertyLists
+            </summary>
+            <param name="list">CimPropertyList to compare</param>
+            <returns>Returns true if the lists have the same properties and values</returns>
+        </member>
+        <member name="P:Wbem.CimParameterList.Item(Wbem.CimName)">
+            <summary>
+            Gets a CimParameter based on the name
+            </summary>
+            <param name="name">Name of the CimParameter</param>
+            <returns>CimParameter or null if not found</returns>
+        </member>
+        <member name="T:Wbem.WbemClient">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Wbem.WbemClient.TestType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Wbem.WbemClient.GetClass(Wbem.CimName)">
+            <summary>
+            
+            </summary>
+            <param name="className"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wbem.WbemClient.GetClass(Wbem.GetClassOpSettings)">
+            <summary>
+            
+            </summary>
+            <param name="settings"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wbem.WbemClient.DeleteClass(Wbem.CimName)">
+            <summary>
+            Deletes a class definition from the cimom
+            </summary>
+            <param name="className"></param>
+        </member>
+        <member name="M:Wbem.WbemClient.DeleteClass(Wbem.DeleteClassOpSettings)">
+            <summary>
+            Deletes a class definition from the cimom
+            </summary>
+            <param name="settings"></param>
+        </member>
+        <member name="M:Wbem.WbemClient.DeleteInstance(Wbem.CimInstanceName)">
+            <summary>
+            Deletes the instance from the Cimom
+            </summary>
+            <param name="instanceName">Name of the instance to delete</param>
+        </member>
+        <member name="M:Wbem.WbemClient.CreateClass(Wbem.CimClass)">
+            <summary>
+            Creates a class on the Cimom
+            </summary>
+            <param name="newClass">CimClass to create</param>
+        </member>
+        <member name="M:Wbem.WbemClient.ModifyClass(Wbem.CimClass)">
+            <summary>
+            Modify a class on the Cimom
+            </summary>
+            <param name="modifiedClass">Class to modify</param>
+        </member>
+        <member name="M:Wbem.WbemClient.GetBaseKeyClassName(System.String)">
+            <summary>
+            Gets the base class of the class
+            </summary>
+            <param name="className"></param>
+            <returns>Returns the name of the class</returns>
+        </member>
+        <member name="M:Wbem.WbemClient.GetBaseKeyClassName(Wbem.CimName)">
+            <summary>
+            Gets the base class of the class
+            </summary>
+            <param name="className"></param>
+            <returns>Returns the name of the class</returns>
+        </member>
+        <member name="P:Wbem.ExecQueryOpSettings.QueryLanguage">
+            <summary>
+            <para>From DMTF Spec:</para>The QueryLanguage input parameter defines the query language in which the Query parameter is expressed.
+            </summary>
+        </member>
+        <member name="P:Wbem.ExecQueryOpSettings.Query">
+            <summary>
+            <para>From DMTF Spec:</para>The Query input parameter defines the query to be executed.
+            </summary>
+        </member>
+        <member name="P:Wbem.AssociatorsOpSettings.ObjectName">
+            <summary>
+            <para>From DMTF Spec:</para>The ObjectName input parameter defines the source CIM Object whose associated Objects are to be returned. This may be either a Class name or Instance name (model path).
+            </summary>
+        </member>
+        <member name="P:Wbem.AssociatorsOpSettings.AssocClass">
+            <summary>
+            <para>From DMTF Spec:</para>The AssocClass input parameter, if not NULL, MUST be a valid CIM Association Class name. It acts as a filter on the returned set of Objects by mandating that each returned Object MUST be associated to the source Object via an Instance of this Class or one of its subclasses.
+            </summary>
+        </member>
+        <member name="P:Wbem.AssociatorsOpSettings.ResultClass">
+            <summary>
+            <para>From DMTF Spec:</para>The ResultClass input parameter, if not NULL, MUST be a valid CIM Class name. It acts as a filter on the returned set of Objects by mandating that each returned Object MUST be either an Instance of this Class (or one of its subclasses) or be this Class (or one of its subclasses).
+            </summary>
+        </member>
+        <member name="P:Wbem.AssociatorsOpSettings.Role">
+            <summary>
+            <para>From DMTF Spec:</para>The Role input parameter, if not NULL, MUST be a valid Property name. It acts as a filter on the returned set of Objects by mandating that each returned Object MUST be associated to the source Object via an Association in which the source Object plays the specified role (i.e. the name of the Property in the Association Class that refers to the source Object MUST match the value of this parameter).
+            </summary>
+        </member>
+        <member name="P:Wbem.AssociatorsOpSettings.ResultRole">
+            <summary>
+            <para>From DMTF Spec:</para>The ResultRole input parameter, if not NULL, MUST be a valid Property name. It acts as a filter on the returned set of Objects by mandating that each returned Object MUST be associated to the source Object via an Association in which the returned Object plays the specified role (i.e. the name of the Property in the Association Class that refers to the returned Object MUST match the value of this parameter).
+            </summary>
+        </member>
+        <member name="P:Wbem.AssociatorsOpSettings.IncludeQualifiers">
+            <summary>
+            <para>From DMTF Spec:</para>DEPRECATION NOTE: The use of the IncludeQualifiers parameter is DEPRECATED and it may be removed in a future version of this specification. The preferred behavior is to use the class operations to receive qualifier information and not depend on any _qualifiers existing in this response. If the IncludeQualifiers input parameter is true, this specifies that all Qualifiers for each Object (including Qualifiers on the Object and on any returned Properties) MUST be included as &lt;QUALIFIER&gt; elements in the response. If false no &lt;QUALIFIER&gt; elements are present in each returned Object.
+            </summary>
+        </member>
+        <member name="P:Wbem.AssociatorsOpSettings.IncludeClassOrigin">
+            <summary>
+            <para>From DMTF Spec:</para>If the IncludeClassOrigin input parameter is true, this specifies that the CLASSORIGIN attribute MUST be present on all appropriate elements in each returned Object. If false, no CLASSORIGIN attributes are present in each returned Object.
+            </summary>
+        </member>
+        <member name="P:Wbem.AssociatorsOpSettings.PropertyList">
+            <summary>
+            <para>From DMTF Spec:</para>If the PropertyList input parameter is not NULL, the members of the array define one or more Property names. Each returned Object MUST NOT include elements for any Properties missing from this list. If the PropertyList input parameter is an empty array this signifies that no Properties are included in each returned Object. If the PropertyList input parameter is NULL this specifies that all Properties (subject to the conditions expressed by the other parameters) are included in each returned Object.
+            <para />If the PropertyList contains duplicate elements, the Server MUST ignore the duplicates but otherwise process the request normally. If the PropertyList contains elements which are invalid Property names for any target Object, the Server MUST ignore such entries but otherwise process the request normally.        
+            </summary>
+        </member>
+        <member name="P:Wbem.AssociatorsWithClassNameOpSettings.ClassName">
+            <summary>
+            <para>From DMTF Spec:</para>The ObjectName input parameter defines the source CIM Object whose associated Objects are to be returned. This may be either a Class name or Instance name (model path).
+            </summary>
+        </member>
+        <member name="P:Wbem.AssociatorsWithInstanceNameOpSettings.InstanceName">
+            <summary>
+            <para>From DMTF Spec:</para>The ObjectName input parameter defines the source CIM Object whose associated Objects are to be returned. This may be either a Class name or Instance name (model path).
+            </summary>
+        </member>
+        <member name="T:Wbem.CimTreeNodeList">
+            <summary>
+            A list of CimTreeNode objects
+            </summary>
+        </member>
+        <member name="T:Wbem.CimPropertyReferenceList">
+            <summary>
+            A list of CimPropertyReference objects
+            </summary>
+        </member>
+        <member name="T:Wbem.CimParameterValueList">
+            <summary>
+            Holds an collection of CimParameter objects
+            </summary>
+        </member>
+        <member name="M:Wbem.CimParameterValueList.#ctor(Wbem.CimParameterValue[])">
+            <summary>
+            Creates a new CimParameterValueList with the given parameters
+            </summary>
+            <param name="items"></param>
+        </member>
+        <member name="M:Wbem.CimParameterValueList.Remove(Wbem.CimName)">
+            <summary>
+            Removes a CimParameter from the collection, based the the name
+            </summary>
+            <param name="name">Name of the parameter to remove</param>        
+        </member>
+        <member name="M:Wbem.CimParameterValueList.op_Equality(Wbem.CimParameterValueList,Wbem.CimParameterValueList)">
+            <summary>
+            Shallow compare two CimPropertyLists
+            </summary>
+            <param name="list1"></param>
+            <param name="list2"></param>
+            <returns>Returns true if both lists have the same elements with the same names</returns>
+        </member>
+        <member name="M:Wbem.CimParameterValueList.op_Inequality(Wbem.CimParameterValueList,Wbem.CimParameterValueList)">
+            <summary>
+            Shallow compare of two CimPropertyLists
+            </summary>
+            <param name="list1"></param>
+            <param name="list2"></param>
+            <returns>Returns true if the lists do not have the same elements</returns>
+        </member>
+        <member name="M:Wbem.CimParameterValueList.op_LessThanOrEqual(Wbem.CimParameterValueList,Wbem.CimParameterValueList)">
+            <summary>
+            Determines whether a list is a subset of another list (shallow compare)
+            </summary>
+            <param name="list1">Superset list</param>
+            <param name="list2">subset list</param>
+            <returns>Returns true if list1 is a superset of list2</returns>
+        </member>
+        <member name="M:Wbem.CimParameterValueList.op_GreaterThanOrEqual(Wbem.CimParameterValueList,Wbem.CimParameterValueList)">
+            <summary>
+            Determines whether a list is a superset of another list (shallow compare)
+            </summary>
+            <param name="list1">Superset list</param>
+            <param name="list2">subset list</param>
+            <returns>Returns true if list1 is a superset of list2</returns>
+        </member>
+        <member name="M:Wbem.CimParameterValueList.IsEqualTo(Wbem.CimParameterValueList)">
+            <summary>
+            Performes a deep compare of two CimPropertyLists
+            </summary>
+            <param name="list">CimPropertyList to compare</param>
+            <returns>Returns true if the lists have the same properties and values</returns>
+        </member>
+        <member name="P:Wbem.CimParameterValueList.Item(Wbem.CimName)">
+            <summary>
+            Gets a CimParameter based on the name
+            </summary>
+            <param name="name">Name of the CimParameter</param>
+            <returns>CimParameter or null if not found</returns>
+        </member>
+        <member name="T:Wbem.CimomError">
+            <summary>
+            Represents an erro thrown by the cimom
+            </summary>
+        </member>
+        <member name="M:Wbem.CimomError.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new CimomError with the given error code and description
+            </summary>
+            <param name="errorCode"></param>
+            <param name="description"></param>
+        </member>
+        <member name="P:Wbem.CimomError.Description">
+            <summary>
+            Gets or sets the description of the error
+            </summary>
+        </member>
+        <member name="P:Wbem.CimomError.DescriptionFromSpec">
+            <summary>
+            Gets the description of the error as defined by the DMTF spec
+            </summary>
+        </member>
+        <member name="P:Wbem.CimomError.XmlResponse">
+            <summary>
+            Gets or sets the XML response of the error
+            </summary>
+        </member>
+        <member name="P:Wbem.CimomError.IsSet">
+            <summary>
+            Returns true if the description is not empty
+            </summary>
+        </member>
+        <member name="T:Wbem.CimomError.CimErrorType">
+            <summary>
+            Errors defined by the DMTF spec
+            </summary>
+        </member>
+        <member name="T:Wbem.CimXmlHeader">
+            <summary>
+            Holds the connection data for the http client to build the request from.
+            </summary>
+        </member>
+        <member name="M:Wbem.CimXmlHeader.#ctor">
+            <summary>
+            Creates an empty CimXmlHeader
+            </summary>
+        </member>
+        <member name="P:Wbem.ExecuteQueryOpSettings.QueryLanguage">
+            <summary>
+            <para>From DMTF Spec:</para>The QueryLanguage input parameter is used to uniquely identify the query language in which the Query parameter is expressed. In order to ensure uniqueness, valid values for QueryLanguage MUST conform to the following syntax: &lt;Vendor ID&gt;:&lt;Language ID&gt;. &lt;Vendor ID&gt; MUST NOT include a colon (":") and MUST include a copyrighted, trademarked or otherwise unique name that is owned by the entity that had defined query language. For DMTF defined query languages, the &lt;Vendor ID&gt; is "CIM". The &lt;Language ID&gt; MUST include a vendor-specified, unique identifier for the query language. "CIM:CQL" is the only DMTF defined value for this parameter. Refer to the CIM Query Language Specification, DSP0202 for details on the CIM:CQL query language.
+            </summary>
+        </member>
+        <member name="P:Wbem.ExecuteQueryOpSettings.Query">
+            <summary>
+            <para>From DMTF Spec:</para>The Query input parameter defines the query to be executed. The format of this string MUST comply with the QueryLanguage specification.
+            </summary>
+        </member>
+        <member name="T:Wbem.CimInstanceNamePathList">
+            <summary>
+            A list of CimInstanceNamePath objects
+            </summary>
+        </member>
+        <member name="T:Wbem.CimClassList">
+            <summary>
+            A list of CimClass objects
+            </summary>
+        </member>
+        <member name="M:Wbem.CimClassList.Remove(System.String)">
+            <summary>
+            Removes the specified CimClass from the list
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wbem.CimClassList.Remove(Wbem.CimName)">
+            <summary>
+            Removes the specified CimClass from the list
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Wbem.CimClassList.Item(System.String)">
+            <summary>
+            Gets a CimClass based on the name. Note: a new CimName is created based on name, and then the collection is searched.
+            </summary>
+            <param name="name">Name of the CimClass</param>
+            <returns>CimClass or null if not found</returns>
+        </member>
+        <member name="P:Wbem.CimClassList.Item(Wbem.CimName)">
+            <summary>
+            Gets a CimClass based on the name
+            </summary>
+            <param name="name">Name of the CimClass</param>
+            <returns>CimClass or null if not found</returns>
+        </member>
+        <member name="P:Wbem.CimInstanceNamePath.InstanceName">
+            <summary>
+            Gets or sets the InstanceName
+            </summary>
+        </member>
+        <member name="T:Wbem.CimInstancePathList">
+            <summary>
+            A list of CimInstancePath objects
+            </summary>
+        </member>
+        <member name="T:Wbem.CimInstanceNameList">
+            <summary>
+            A list of CimInstanceName objects
+            </summary>
+        </member>
+        <member name="T:Wbem.NullableInt32">
+            <summary>
+            A value of type int that can also be set to null
+            </summary>
+        </member>
+        <member name="M:Wbem.NullableInt32.#ctor">
+            <summary>
+            Creates a default NullableInt32
+            </summary>
+        </member>
+        <member name="M:Wbem.NullableInt32.ToInt">
+            <summary>
+            Returns the integer value of the NullableInt object. Returns 0 if null.
+            </summary>
+            <returns>int</returns>
+        </member>
+        <member name="M:Wbem.NullableInt32.ToString">
+            <summary>
+            Returns the string value of the ToInt() call.
+            </summary>
+            <returns>string</returns>
+        </member>
+        <member name="M:Wbem.NullableInt32.Equals(System.Object)">
+            <summary>
+            Compares the values of two NullableInt objects
+            </summary>
+            <param name="obj">object to compare</param>
+            <returns>True if the values of the NullableInt objects are equal</returns>
+        </member>
+        <member name="M:Wbem.NullableInt32.op_Implicit(System.String)~Wbem.NullableInt32">
+            <summary>
+            Implicitly convert from a string to NullableInt.
+            </summary>
+            <param name="value">String to convert</param>
+            <returns>NullableInt</returns>
+        </member>
+        <member name="M:Wbem.NullableInt32.op_Implicit(System.Int32)~Wbem.NullableInt32">
+            <summary>
+            Implicitly convert from a int to NullableInt.
+            </summary>
+            <param name="value">int to convert</param>
+            <returns>NullableInt</returns>
+        </member>
+        <member name="T:Wbem.CimMethod">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Wbem.CimMethod.Parameters">
+            <summary>
+            Gets or sets the CimParameters of the CimMethod object
+            </summary>
+        </member>
+        <member name="T:Wbem.CimDataTypes.CimDateTime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Wbem.CimNamespacePath.Host">
+            <summary>
+            Gets or sets the CimHost
+            </summary>
+        </member>
+        <member name="P:Wbem.CimNamespacePath.Namespace">
+            <summary>
+            Gets or sets the LocalNamespacePath
+            </summary>
+        </member>
+        <member name="T:Wbem.GetClassOpSettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Wbem.GetClassOpSettings.ClassName">
+            <summary>
+            <para>From DMTF Spec:</para>The ClassName input parameter defines the name of the Class to be retrieved.
+            </summary>
+        </member>
+        <member name="P:Wbem.GetClassOpSettings.LocalOnly">
+            <summary>
+            <para>From DMTF Spec:</para>If the LocalOnly input parameter is true, this specifies that only CIM Elements (properties, methods and _qualifiers) defined or overridden within the definition of the Class  (as specified in the classname input parameter) are returned.   If false, all elements are returned.
+            </summary>
+        </member>
+        <member name="P:Wbem.GetClassOpSettings.IncludeQualifiers">
+            <summary>
+            <para>From DMTF Spec:</para>If the IncludeQualifiers input parameter is true, this specifies that all Qualifiers for that Class (including Qualifiers on the Class and on any returned Properties, Methods or Method Parameters) MUST be included as &lt;QUALIFIER&gt; elements in the response.  If false no &lt;QUALIFIER&gt; elements are present in the returned Class.
+            </summary>
+        </member>
+        <member name="P:Wbem.GetClassOpSettings.IncludeClassOrigin">
+            <summary>
+            <para>From DMTF Spec:</para>If the IncludeClassOrigin input parameter is true, this specifies that the CLASSORIGIN attribute MUST be present on all appropriate elements in the returned Class. If false, no CLASSORIGIN attributes are present in the returned Class.
+            </summary>
+        </member>
+        <member name="P:Wbem.GetClassOpSettings.PropertyList">
+            <summary>
+            <para>From DMTF Spec:</para>If the PropertyList input parameter is not NULL, the members of the array define one or more Property names.  The returned Class MUST NOT include elements for any Properties missing from this list.  Note that if LocalOnly is specified as true this acts as an additional filter on the set of Properties returned (for example, if Property A is included in the PropertyList but LocalOnly is set to true and A is not local to the requested Class, then it will not be included in the response). If the PropertyList input parameter is an empty array this signifies that no Properties are included in the response. If the PropertyList input parameter is NULL this specifies that all Properties (subject to the conditions expressed by the other parameters) are included in the response.
+            <para />If the PropertyList contains duplicate elements, the Server MUST ignore the duplicates but otherwise process the request normally.  If the PropertyList contains elements which are invalid Property names for the target Class, the Server MUST ignore such entries but otherwise process the request normally.
+            </summary>
+        </member>
+        <member name="P:Wbem.ModifyClassOpSettings.ModifiedClass">
+            <summary>
+            <para>From DMTF Spec:</para>The ModifiedClass input parameter defines the set of changes (which MUST be correct amendments to the CIM Class as defined by the CIM Specification [1]) to be made to the current class definition.
+            </summary>
+        </member>
+        <member name="T:Wbem.CimPropertyList">
+            <summary>
+            Holds an collection of CimProperty objects
+            </summary>
+        </member>
+        <member name="M:Wbem.CimPropertyList.#ctor">
+            <summary>
+            Creates an empty CimPropertyList
+            </summary>
+        </member>
+        <member name="M:Wbem.CimPropertyList.#ctor(Wbem.CimProperty[])">
+            <summary>
+            Creates a new CimPropertyList with the given CimProperties
+            </summary>
+            <param name="properties"></param>
+        </member>
+        <member name="M:Wbem.CimPropertyList.Remove(System.String)">
+            <summary>
+            Removes a CimProperty from the collection, based the the name
+            </summary>
+            <param name="name">Name of the property to remove</param>
+        </member>
+        <member name="M:Wbem.CimPropertyList.Remove(Wbem.CimName)">
+            <summary>
+            Removes a CimProperty from the collection, based the the name
+            </summary>
+            <param name="name">Name of the property to remove</param>        
+        </member>
+        <member name="M:Wbem.CimPropertyList.FindItem(Wbem.CimName)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wbem.CimPropertyList.op_Equality(Wbem.CimPropertyList,Wbem.CimPropertyList)">
+            <summary>
+            Shallow compare two CimPropertyLists
+            </summary>
+            <param name="list1"></param>
+            <param name="list2"></param>
+            <returns>Returns true if both lists have the same elements with the same names</returns>
+        </member>
+        <member name="M:Wbem.CimPropertyList.op_Inequality(Wbem.CimPropertyList,Wbem.CimPropertyList)">
+            <summary>
+            Shallow compare of two CimPropertyLists
+            </summary>
+            <param name="list1"></param>
+            <param name="list2"></param>
+            <returns>Returns true if the lists do not have the same elements</returns>
+        </member>
+        <member name="M:Wbem.CimPropertyList.op_LessThanOrEqual(Wbem.CimPropertyList,Wbem.CimPropertyList)">
+            <summary>
+            Determines whether a list is a subset of another list (shallow compare)
+            </summary>
+            <param name="list1">Subset list</param>
+            <param name="list2">Superset list</param>
+            <returns>Returns true if list1 is a subset of list2</returns>
+        </member>
+        <member name="M:Wbem.CimPropertyList.op_GreaterThanOrEqual(Wbem.CimPropertyList,Wbem.CimPropertyList)">
+            <summary>
+            Determines whether a list is a superset of another list (shallow compare)
+            </summary>
+            <param name="list1">superset list</param>
+            <param name="list2">subset list</param>
+            <returns>Returns true if list1 is a superset of list2</returns>
+        </member>
+        <member name="M:Wbem.CimPropertyList.IsEqualTo(Wbem.CimPropertyList)">
+            <summary>
+            Performes a deep compare of two CimPropertyLists
+            </summary>
+            <param name="list">CimPropertyList to compare</param>
+            <returns>Returns true if the lists have the same properties and values</returns>
+        </member>
+        <member name="M:Wbem.CimPropertyList.GetKeyProperties">
+            <summary>
+            Finds all key properties in the list
+            </summary>
+            <returns>A list of all the key properties</returns>
+        </member>
+        <member name="M:Wbem.CimPropertyList.GetRequiredProperties">
+            <summary>
+            Finds all required properties in the list
+            </summary>
+            <returns>A list of all the required properties</returns>
+        </member>
+        <member name="P:Wbem.CimPropertyList.Item(System.String)">
+            <summary>
+            Gets a CimProperty based on the name
+            </summary>
+            <param name="name">Name of the CimProperty</param>
+            <returns>CimProperty or null if not found</returns>
+        </member>
+        <member name="P:Wbem.CimPropertyList.Item(Wbem.CimName)">
+            <summary>
+            Gets a CimProperty based on the name
+            </summary>
+            <param name="name">Name of the CimProperty</param>
+            <returns>CimProperty or null if not found</returns>
+        </member>
+        <member name="P:Wbem.CimPropertyList.HasKeyProperty">
+            <summary>
+            Returns true if the list has at least one key property
+            </summary>
+        </member>
+        <member name="T:Wbem.CimQualifierFlavor">
+            <summary>
+            Settings for a CimQualifier
+            </summary>
+        </member>
+        <member name="M:Wbem.CimQualifierFlavor.#ctor">
+            <summary>
+            Creates a default CimQualifierFlavor object with the default settings
+            </summary>
+        </member>
+        <member name="P:Wbem.CimQualifierFlavor.Overridable">
+            <summary>
+            The flag which indicates if this qualifier is overridable. Defaults to true.
+            </summary>
+        </member>
+        <member name="P:Wbem.CimQualifierFlavor.ToSubClass">
+            <summary>
+            Gets or sets the flag ToSubclass. Defaults to true.
+            </summary>
+        </member>
+        <member name="P:Wbem.CimQualifierFlavor.ToInstance">
+            <summary>
+            Gets or sets the flag ToInstance. Defaults to false.
+            </summary>
+        </member>
+        <member name="P:Wbem.CimQualifierFlavor.Translatable">
+            <summary>
+            Gets or sets the flag indicating. Defaults to false.
+            </summary>
+        </member>
+        <member name="P:Wbem.CimQualifierFlavor.IsSet">
+            <summary>
+            Returns true if all flavors are set
+            </summary>
+        </member>
+        <member name="T:Wbem.CimPropertyReference">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Wbem.CimPropertyReference.#ctor(Wbem.CimName)">
+            <summary>
+            Creates a new CimPropertyReference with the given name
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="P:Wbem.CimPropertyReference.ReferenceClass">
+            <summary>
+            Gets or sets the name of the Ref class
+            </summary>
+        </member>
+        <member name="P:Wbem.CimPropertyReference.ValueReference">
+            <summary>
+            Gets or sets the reference value
+            </summary>
+        </member>
+        <member name="T:Wbem.ICimObjectName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Wbem.CimParameterValue">
+            <summary>
+            An extrinsic method named parameter value
+            </summary>
+        </member>
+        <member name="M:Wbem.CimParameterValue.#ctor(Wbem.NullableCimType,Wbem.CimName)">
+            <summary>
+            Creates a new CimParameterValue with the given name and type
+            </summary>
+            <param name="type"></param>
+            <param name="name"></param>
+        </member>
+        <member name="M:Wbem.CimParameterValue.#ctor(Wbem.NullableCimType,Wbem.CimName,System.String[])">
+            <summary>
+            Creates a new CimParameter with the given name, type, and values
+            </summary>
+            <param name="type"></param>
+            <param name="name"></param>
+            <param name="values"></param>
+        </member>
+        <member name="P:Wbem.CimParameterValue.Name">
+            <summary>
+            Gets or sets the name of the parameter
+            </summary>
+        </member>
+        <member name="P:Wbem.CimParameterValue.Type">
+            <summary>
+            Gets or sets the type of the parameter
+            </summary>
+        </member>
+        <member name="P:Wbem.CimParameterValue.ValueArray">
+            <summary>
+            Gets or sets the 
+            </summary>
+        </member>
+        <member name="P:Wbem.CimParameterValue.IsSet">
+            <summary>
+            Returns true name, type, and value array are all set
+            </summary>
+        </member>
+        <member name="T:Wbem.CimClassPath">
+            <summary>
+            Represent a CimClass as well as the host and namespace path to the CimClass
+            </summary>
+        </member>
+        <member name="M:Wbem.CimClassPath.#ctor">
+            <summary>
+            Creates an empty CimClassPath
+            </summary>
+        </member>
+        <member name="M:Wbem.CimClassPath.#ctor(Wbem.CimClass,Wbem.CimNamespacePath)">
+            <summary>
+            Creates a CimClassPath object with the CimClass and the NamespacePath set
+            </summary>
+            <param name="mClass"></param>
+            <param name="namespacepath"></param>
+        </member>
+        <member name="P:Wbem.CimClassPath.Class">
+            <summary>
+            Gets or sets the name of the class
+            </summary>
+        </member>
+        <member name="P:Wbem.CimClassPath.IsSet">
+            <summary>
+            Returns true if the Namespace and Class are both set
+            </summary>
+        </member>
+        <member name="P:Wbem.EnumerateInstanceNamesOpSettings.ClassName">
+            <summary>
+            <para>From DMTF Spec:</para>The ClassName input parameter defines the Class that is the basis for the enumeration.
+            </summary>
+        </member>
+        <member name="P:Wbem.EnumerateClassesOpSettings.DeepInheritance">
+            <summary>
+            <para>From DMTF Spec:</para>If the DeepInheritance input parameter is true, this specifies that all subclasses of the specified Class should be returned (if the ClassName input parameter is absent, this implies that all Classes in the target Namespace should be returned). If false, only immediate child subclasses are returned (if the ClassName input parameter is NULL, this implies that all base Classes in the target Namespace should be returned). This definition of DeepInheritance applies only to the EnumerateClasses and EnumerateClassName operations.
+            </summary>
+        </member>
+        <member name="T:Wbem.CimQualifierList">
+            <summary>
+            Holds an collection of CimQualifiers objects
+            </summary>
+        </member>
+        <member name="M:Wbem.CimQualifierList.#ctor">
+            <summary>
+            Creates an empty CimQualifierList
+            </summary>
+        </member>
+        <member name="M:Wbem.CimQualifierList.#ctor(Wbem.CimQualifier[])">
+            <summary>
+            Creates a new CimQualifierList with the given CimQualifiers
+            </summary>
+            <param name="qualifiers"></param>
+        </member>
+        <member name="M:Wbem.CimQualifierList.Remove(System.String)">
+            <summary>
+            Removes a CimQualifier from the collection, based the the name
+            </summary>
+            <param name="name">Name of the qualifier to remove</param>
+        </member>
+        <member name="M:Wbem.CimQualifierList.Remove(Wbem.CimName)">
+            <summary>
+            Removes a CimQualifier from the collection, based the the name
+            </summary>
+            <param name="name">Name of the qualifier to remove</param>        
+        </member>
+        <member name="M:Wbem.CimQualifierList.op_Equality(Wbem.CimQualifierList,Wbem.CimQualifierList)">
+            <summary>
+            Shallow compare of two lists
+            </summary>
+            <param name="val1"></param>
+            <param name="val2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wbem.CimQualifierList.op_Inequality(Wbem.CimQualifierList,Wbem.CimQualifierList)">
+            <summary>
+            Shallow compare of two lists
+            </summary>
+            <param name="val1"></param>
+            <param name="val2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wbem.CimQualifierList.op_LessThanOrEqual(Wbem.CimQualifierList,Wbem.CimQualifierList)">
+            <summary>
+            Shallow compare of two lists
+            </summary>
+            <param name="val1"></param>
+            <param name="val2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wbem.CimQualifierList.op_GreaterThanOrEqual(Wbem.CimQualifierList,Wbem.CimQualifierList)">
+            <summary>
+            Shallow compare of two lists
+            </summary>
+            <param name="val1"></param>
+            <param name="val2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wbem.CimQualifierList.IsEqualTo(Wbem.CimQualifierList)">
+            <summary>
+            Performs a deep compare
+            </summary>
+            <param name="list"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Wbem.CimQualifierList.Item(System.String)">
+            <summary>
+            Gets a CimQualifier based on the name. Note: a new CimName is created base on name, and then the collection is searched.
+            </summary>
+            <param name="name">Name of the CimQualifier</param>
+            <returns>CimQualifier or null if not found</returns>
+        </member>
+        <member name="P:Wbem.CimQualifierList.Item(Wbem.CimName)">
+            <summary>
+            Gets a CimQualifier based on the name
+            </summary>
+            <param name="name">Name of the CimQualifier</param>
+            <returns>CimQualifier or null if not found</returns>
+        </member>
+        <member name="T:Wbem.CimInstance">
+            <summary>
+            The INSTANCE element defines a single CIM Instance of a CIM Class
+            </summary>
+        </member>
+        <member name="M:Wbem.CimInstance.#ctor(System.String)">
+            <summary>
+            Creates a CimInstance object with 
+            </summary>
+            <param name="className"></param>
+        </member>
+        <member name="M:Wbem.CimInstance.AreKeyPropertiesSet(Wbem.CimPropertyList)">
+            <summary>
+            Checks the properties of a CimInstance object against the keyProperties list
+            </summary>
+            <param name="keyProperties">list of key properties to check</param>
+            <returns>Returns true if all the key properties are set</returns>
+        </member>
+        <member name="M:Wbem.CimInstance.ToString(Wbem.CimClass)">
+            <summary>
+            Returns the string with the name and key property values of the instance. It requires the class
+            definition in order to find the required properties, and the instance itself doesn't have the needed
+            qualifiers attached to the properties.
+            </summary>
+            <param name="classDef">class definition of the instance</param>
+            <returns></returns>
+        </member>
+        <member name="M:Wbem.CimInstance.Equals(System.Object)">
+            <summary>
+            Compares the members of CimInstance (ClassName, Qualifiers, Properties)
+            </summary>
+            <param name="obj">CimInstance to compare to</param>
+            <returns>Returns true if the two CimInstances have the same class anme, qualifiers, and properties</returns>
+        </member>
+        <member name="M:Wbem.CimInstance.op_Equality(Wbem.CimInstance,Wbem.CimInstance)">
+            <summary>
+            Compares the members of CimInstance (ClassName, Qualifiers, Properties)
+            </summary>
+            <param name="instance1"></param>
+            <param name="instance2"></param>
+            <returns>Returns true if the two CimInstances have the same class anme, qualifiers, and properties</returns>
+        </member>
+        <member name="M:Wbem.CimInstance.op_Inequality(Wbem.CimInstance,Wbem.CimInstance)">
+            <summary>
+            Compares the members of CimInstance (ClassName, Qualifiers, Properties)
+            </summary>
+            <param name="instance1"></param>
+            <param name="instance2"></param>
+            <returns>Returns true if the two CimInstances have the same class anme, qualifiers, and properties</returns>
+        </member>
+        <member name="P:Wbem.CimInstance.InstanceName">
+            <summary>
+            InstanceName of the instance
+            </summary>
+        </member>
+        <member name="P:Wbem.CimInstance.ClassName">
+            <summary>
+            Gets or sets the name of the CimClass object
+            </summary>
+        </member>
+        <member name="P:Wbem.GetInstanceOpSettings.InstanceName">
+            <summary>
+            <para>From DMTF Spec:</para>The InstanceName input parameter defines the name of the Instance to be retrieved.
+            </summary>
+        </member>
+        <member name="P:Wbem.GetInstanceOpSettings.LocalOnly">
+            <summary>
+            <para>From DMTF Spec:</para>DEPRECATION NOTE: With the 1.2 release of this specification, the LocalOnly parameter is DEPRECATED. LocalOnly filtering, as defined in 1.1, will not be supported in the next major revision of this specification. In the 1.1 version of this specification, the definition of the LocalOnly parameter was incorrectly modified. This change introduced a number of interoperability and backward compatibility problems for CIM Clients using the LocalOnly parameter to filter the set of Properties returned. The DMTF strongly recommends that CIM Clients set LocalOnly = false and do not rely on the use of this parameter to filter the set of Properties returned. To minimize the impact of implementing this recommendation on CIM Clients, a CIM Server MAY choose to treat the value of the LocalOnly parameter as FALSE for all requests. A CIM Server MUST consistently support a single interpretation of the LocalOnly parameter. Refer to Appendix C for additional details.
+            </summary>
+        </member>
+        <member name="P:Wbem.GetInstanceOpSettings.IncludeQualifiers">
+            <summary>
+            <para>From DMTF Spec:</para>DEPRECATION NOTE: The use of the IncludeQualifiers parameter is DEPRECATED and it may be removed in a future version of this specification. The IncludeQualifiers parameter definition is ambiguous and when set to true CIM Clients can not be assured of any _qualifiers being returned. A CIM Client SHOULD always set this parameter to false. To minimize the impact of implementing this recommendation on CIM Clients, a CIM Server MAY choose to treat the value of the IncludeQualifiers parameter as FALSE for all requests. The preferred behavior is to use the class operations to receive qualifier information and not depend on any _qualifiers existing in this response. If the IncludeQualifiers input parameter is true, this specifies that all Qualifiers for that Instance (including Qualifiers on the Instance and on any returned Properties) MUST be included as &lt;QUALIFIER&gt; elements in the response. If false no &lt;QUALIFIER&gt; elements are present in the returned Instance.
+            </summary>
+        </member>
+        <member name="P:Wbem.GetInstanceOpSettings.IncludeClassOrigin">
+            <summary>
+            <para>From DMTF Spec:</para>If the IncludeClassOrigin input parameter is true, this specifies that the CLASSORIGIN attribute MUST be present on all appropriate elements in the returned Instance. If false, no CLASSORIGIN attributes are present in the returned Instance.
+            </summary>
+        </member>
+        <member name="P:Wbem.GetInstanceOpSettings.PropertyList">
+            <summary>
+            <para>From DMTF Spec:</para>If the PropertyList input parameter is not NULL, the members of the array define one or more Property names. The returned Instance MUST NOT include elements for any Properties missing from this list. Note that if LocalOnly is specified as true this acts as an additional filter on the set of Properties returned (for example, if Property A is included in the PropertyList but LocalOnly is set to true and A is not local to the requested Instance, then it will not be included in the response). If the PropertyList input parameter is an empty array this signifies that no Properties are included in the response. If the PropertyList input parameter is NULL this specifies that all Properties (subject to the conditions expressed by the other parameters) are included in the response.
+            <para />If the PropertyList contains duplicate elements, the Server MUST ignore the duplicates but otherwise process the request normally. If the PropertyList contains elements which are invalid Property names for the target Instance, the Server MUST ignore such entries but otherwise process the request normally.
+            </summary>
+        </member>
+        <member name="T:Wbem.CimKeyBindingList">
+            <summary>
+            A list of CimKeyBinding objects
+            </summary>
+        </member>
+        <member name="M:Wbem.CimKeyBindingList.ShallowEquals(Wbem.CimKeyBindingList)">
+            <summary>
+            Compares the names of the KeyBindings in the list. 
+            </summary>
+            <param name="list">CimKeyBindingList to compare with</param>
+            <returns>True if the lists have the same count and same items</returns>
+        </member>
+        <member name="M:Wbem.CimKeyBindingList.Equals(System.Object)">
+            <summary>
+            Returns true if the two CimKeyBindingLists have the same key bindings
+            </summary>
+            <param name="val1"></param>
+            <param name="val2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wbem.CimKeyBindingList.op_Equality(Wbem.CimKeyBindingList,Wbem.CimKeyBindingList)">
+            <summary>
+            Returns true if the two CimKeyBindingLists have the same key bindings. 
+            </summary>
+            <param name="val1"></param>
+            <param name="val2"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wbem.CimKeyBindingList.op_Inequality(Wbem.CimKeyBindingList,Wbem.CimKeyBindingList)">
+            <summary>
+            Returns true if the two CimKeyBindingLists do not have the same key bindings
+            </summary>
+            <param name="val1"></param>
+            <param name="val2"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Wbem.CimKeyBindingList.Item(System.String)">
+            <summary>
+            Gets a CimKeyBinding based on the name
+            </summary>
+            <param name="name">Name of the CimKeyBinding</param>
+            <returns>CimKeyBinding or null if not found</returns>
+        </member>
+        <member name="P:Wbem.CimKeyBindingList.Item(Wbem.CimName)">
+            <summary>
+            Gets a CimKeyBinding based on the name
+            </summary>
+            <param name="name">Name of the CimKeyBinding</param>
+            <returns>CimKeyBinding or null if not found</returns>
+        </member>
+        <member name="T:Wbem.NullableCimType">
+            <summary>
+            A value of type CimType that can also be set to null
+            </summary>
+        </member>
+        <member name="M:Wbem.NullableCimType.#ctor">
+            <summary>
+            Creates a default NullabelCimType
+            </summary>
+        </member>
+        <member name="M:Wbem.NullableCimType.ToCimType">
+            <summary>
+            Returns the integer value of the NullableCimType object. Returns 0 if null.
+            </summary>
+            <returns>int</returns>
+        </member>
+        <member name="M:Wbem.NullableCimType.ToString">
+            <summary>
+            Returns the string value of the ToInt() call.
+            </summary>
+            <returns>string</returns>
+        </member>
+        <member name="M:Wbem.NullableCimType.Equals(System.Object)">
+            <summary>
+            Compares the values of two NullableCimType objects
+            </summary>
+            <param name="obj">object to compare</param>
+            <returns>True if the values of the NullableCimType objects are equal</returns>
+        </member>
+        <member name="M:Wbem.NullableCimType.op_Implicit(System.String)~Wbem.NullableCimType">
+            <summary>
+            Implicitly convert from a string to NullableCimType.
+            </summary>
+            <param name="value">String to convert</param>
+            <returns>NullableCimType</returns>
+        </member>
+        <member name="M:Wbem.NullableCimType.op_Implicit(Wbem.CimType)~Wbem.NullableCimType">
+            <summary>
+            Implicitly convert from a int to NullableCimType.
+            </summary>
+            <param name="value">int to convert</param>
+            <returns>NullableCimType</returns>
+        </member>
+        <member name="T:Wbem.CimParameterRefArray">
+            <summary>
+            A single parameter to a CimMethod that has an array of references type
+            </summary>
+        </member>
+        <member name="T:Wbem.CimParameterReference">
+            <summary>
+            A reference parameter to a CimMethod
+            </summary>
+        </member>
+        <member name="M:Wbem.CimParameterReference.#ctor(System.String)">
+            <summary>
+            Creates a new CimParameter object with the given name
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="P:Wbem.CimParameterReference.ReferenceClass">
+            <summary>
+            Gets or sets the reference class
+            </summary>
+        </member>
+        <member name="P:Wbem.CimParameterReference.IsSet">
+            <summary>
+            Returns true if the ReferenceClass is set
+            </summary>
+        </member>
+        <member name="M:Wbem.CimParameterRefArray.#ctor(System.String)">
+            <summary>
+            Creates a new CimParameterRefArray with the given name
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="P:Wbem.CimParameterRefArray.ArraySize">
+            <summary>
+            Gets or sets the size of the array
+            </summary>
+        </member>
+        <member name="P:Wbem.ReferenceNamesOpSettings.ObjectName">
+            <summary>
+            <para>From DMTF Spec:</para>The ObjectName input parameter defines the target CIM Object whose referring object names are to be returned. It may be either a Class name or an Instance name (model path).
+            </summary>
+        </member>
+        <member name="P:Wbem.ReferenceNamesOpSettings.ResultClass">
+            <summary>
+            <para>From DMTF Spec:</para>The ResultClass input parameter, if not NULL, MUST be a valid CIM Class name. It acts as a filter on the returned set of Object Names by mandating that each returned Object Name MUST identify an Instance of this Class (or one of its subclasses), or this Class (or one of its subclasses).
+            </summary>
+        </member>
+        <member name="P:Wbem.ReferenceNamesOpSettings.Role">
+            <summary>
+            <para>From DMTF Spec:</para>The Role input parameter, if not NULL, MUST be a valid Property name. It acts as a filter on the returned set of Object Names by mandating that each returned Object Name MUST identify an Object that refers to the target Instance via a Property whose name matches the value of this parameter.
+            </summary>
+        </member>
+        <member name="P:Wbem.ReferenceNamesWithClassNameOpSettings.ClassName">
+            <summary>
+            <para>From DMTF Spec:</para>The ObjectName input parameter defines the target CIM Object whose referring object names are to be returned. It may be either a Class name or an Instance name (model path).
+            </summary>
+        </member>
+        <member name="P:Wbem.ReferenceNamesWithInstanceNameOpSettings.InstanceName">
+            <summary>
+            <para>From DMTF Spec:</para>The ObjectName input parameter defines the target CIM Object whose referring object names are to be returned. It may be either a Class name or an Instance name (model path).
+            </summary>
+        </member>
+        <member name="T:Wbem.CimMethodList">
+            <summary>
+            Holds an collection of CimMethod objects
+            </summary>
+        </member>
+        <member name="M:Wbem.CimMethodList.#ctor">
+            <summary>
+            Creates an empty CimMethodList
+            </summary>
+        </member>
+        <member name="M:Wbem.CimMethodList.#ctor(Wbem.CimMethod[])">
+            <summary>
+            Creates a new CimMethodList with the given CimMethods
+            </summary>
+            <param name="methods"></param>
+        </member>
+        <member name="M:Wbem.CimMethodList.Remove(System.String)">
+            <summary>
+            Removes a CimMethod from the collection, based the the name
+            </summary>
+            <param name="name">Name of the method to remove</param>
+        </member>
+        <member name="M:Wbem.CimMethodList.Remove(Wbem.CimName)">
+            <summary>
+            Removes a CimMethod from the collection, based the the name
+            </summary>
+            <param name="name">Name of the method to remove</param>        
+        </member>
+        <member name="P:Wbem.CimMethodList.Item(System.String)">
+            <summary>
+            Gets a CimMethod based on the name
+            </summary>
+            <param name="name">Name of the CimMethod</param>
+            <returns>CimMethod or null if not found</returns>
+        </member>
+        <member name="P:Wbem.CimMethodList.Item(Wbem.CimName)">
+            <summary>
+            Gets a CimMethod based on the name
+            </summary>
+            <param name="name">Name of the CimMethod</param>
+            <returns>CimMethod or null if not found</returns>
+        </member>
+        <member name="T:Wbem.CimInstanceList">
+            <summary>
+            A list of CimInstance objects
+            </summary>
+        </member>
+        <member name="T:Wbem.CimInstanceName">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Wbem.CimInstanceName.KeyBindings">
+            <summary>
+            Gets or set the value
+            </summary>
+        </member>
+        <member name="P:Wbem.CimInstanceName.ClassName">
+            <summary>
+            Name of the class
+            </summary>
+        </member>
+        <member name="P:Wbem.CimInstanceName.IsSet">
+            <summary>
+            Returns true if the class name and key bindings are set.
+            </summary>
+        </member>
+        <member name="P:Wbem.GetPropertyOpSettings.InstanceName">
+            <summary>
+            <para>From DMTF Spec:</para>The InstanceName input parameter specifies the name of the Instance (model path) from which the Property value is requested.
+            </summary>
+        </member>
+        <member name="P:Wbem.GetPropertyOpSettings.PropertyName">
+            <summary>
+            <para>From DMTF Spec:</para>The PropertyName input parameter specifies the name of the Property whose value is to be returned.
+            </summary>
+        </member>
+        <member name="T:Wbem.CimQualifierDeclarationList">
+            <summary>
+            A list of CimQualifierDeclaration objects
+            </summary>
+        </member>
+        <member name="T:Wbem.CimClassPathList">
+            <summary>
+            A list of CimClassPath objects
+            </summary>
+        </member>
+        <member name="T:Wbem.CimTypeUtils">
+            <summary>
+            Utils class for CimType
+            </summary>
+        </member>
+        <member name="M:Wbem.CimTypeUtils.IsEmbeddedObjectType(Wbem.CimType)">
+            <summary>
+            Returns true if the type is a reference type
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wbem.CimTypeUtils.IsReferenceType(Wbem.CimType)">
+            <summary>
+            Returns true if the type is a reference type
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wbem.CimTypeUtils.isNumericType(Wbem.CimType)">
+            <summary>
+            Returns true if the type is a numeric type
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wbem.CimTypeUtils.StrToBool(System.String)">
+            <summary>
+            Converts a string to a bool
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wbem.CimTypeUtils.CimTypeToStr(System.Nullable{Wbem.CimType})">
+            <summary>
+            Converts a nullable CimType to a string
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wbem.CimTypeUtils.CimTypeToStr(Wbem.CimType)">
+            <summary>
+            Converts a CimType to a string
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Wbem.CimTypeUtils.StrToCimType(System.String)">
+            <summary>
+            Converts a string to a CimType
+            </summary>
+            <param name="str"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Wbem.CimType">
+            <summary>
+            The defined types for a non-reference CimProperty, CimQualifier, or non-reference CimParameter
+            </summary>
+        </member>
+        <member name="T:Wbem.CimQualifierDeclaration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Wbem.CimQualifierDeclaration.Type">
+            <summary>
+            Gets or sets the CimType of this qualifier
+            </summary>
+        </member>
+        <member name="P:Wbem.CimQualifierDeclaration.Name">
+            <summary>
+            Gets or sets the name of the CimQualifier object
+            </summary>
+        </member>
+        <member name="P:Wbem.CimQualifierDeclaration.IsArray">
+            <summary>
+            Gets or sets: Returns true if the Qualifier is an array
+            </summary>
+        </member>
+        <member name="P:Wbem.CimQualifierDeclaration.Values">
+            <summary>
+            Gets or set the values of the qualifier declaration
+            </summary>
+        </member>
+        <member name="P:Wbem.ReferencesOpSettings.ObjectName">
+            <summary>
+            <para>From DMTF Spec:</para>The ObjectName input parameter defines the target CIM Object whose referring Objects are to be returned. This is either a Class name or Instance name (model path).
+            </summary>
+        </member>
+        <member name="P:Wbem.ReferencesOpSettings.ResultClass">
+            <summary>
+            <para>From DMTF Spec:</para>The ResultClass input parameter, if not NULL, MUST be a valid CIM Class name. It acts as a filter on the returned set of Objects by mandating that each returned Object MUST be an Instance of this Class (or one of its subclasses), or this Class (or one of its subclasses).
+            </summary>
+        </member>
+        <member name="P:Wbem.ReferencesOpSettings.Role">
+            <summary>
+            <para>From DMTF Spec:</para>The Role input parameter, if not NULL, MUST be a valid Property name. It acts as a filter on the returned set of Objects by mandating that each returned Objects MUST refer to the target Object via a Property whose name matches the value of this parameter.
+            </summary>
+        </member>
+        <member name="P:Wbem.ReferencesOpSettings.IncludeQualifiers">
+            <summary>
+            <para>From DMTF Spec:</para>DEPRECATION NOTE: The use of the IncludeQualifiers parameter is DEPRECATED and it may be removed in a future version of this specification. The preferred behavior is to use the class operations to receive qualifier information and not depend on any _qualifiers existing in this response. If the IncludeQualifiers input parameter is true, this specifies that all Qualifiers for each Object (including Qualifiers on the Object and on any returned Properties) MUST be included as &lt;QUALIFIER&gt; elements in the response. If false no &lt;QUALIFIER&gt; elements are present in each returned Object.
+            </summary>
+        </member>
+        <member name="P:Wbem.ReferencesOpSettings.IncludeClassOrigin">
+            <summary>
+            <para>From DMTF Spec:</para>If the IncludeClassOrigin input parameter is true, this specifies that the CLASSORIGIN attribute MUST be present on all appropriate elements in each returned Object. If false, no CLASSORIGIN attributes are present in each returned Object.
+            </summary>
+        </member>
+        <member name="P:Wbem.ReferencesOpSettings.PropertyList">
+            <summary>
+            <para>From DMTF Spec:</para>If the PropertyList input parameter is not NULL, the members of the array define one or more Property names. Each returned Object MUST NOT include elements for any Properties missing from this list. If the PropertyList input parameter is an empty array this signifies that no Properties are included in each returned Object. If the PropertyList input parameter is NULL this specifies that all Properties (subject to the conditions expressed by the other parameters) are included in each returned Object.
+            <para />If the PropertyList contains duplicate elements, the Server MUST ignore the duplicates but otherwise process the request normally. If the PropertyList contains elements which are invalid Property names for any target Object, the Server MUST ignore such entries but otherwise process the request normally.
+            <para />Clients SHOULD NOT explicitly specify properties in the PropertyList parameter unless they have specified a non-NULL value for the ResultClass parameter.
+            </summary>
+        </member>
+        <member name="P:Wbem.ReferencesWithClassNameOpSettings.ClassName">
+            <summary>
+            <para>From DMTF Spec:</para>The ObjectName input parameter defines the target CIM Object whose referring Objects are to be returned. This is either a Class name or Instance name (model path).
+            </summary>
+        </member>
+        <member name="P:Wbem.ReferencesWithInstanceNameOpSettings.InstanceName">
+            <summary>
+            <para>From DMTF Spec:</para>The ObjectName input parameter defines the target CIM Object whose referring Objects are to be returned. This is either a Class name or Instance name (model path).
+            </summary>
+        </member>
+        <member name="P:Wbem.CreateInstanceOpSettings.Instance">
+            <summary>
+            <para>From DMTF Spec:</para>The NewInstance input parameter defines the new Instance. The proposed definition MUST be a correct Instance definition for the underlying CIM Class according to the CIM specification [1].
+            </summary>
+        </member>
+        <member name="T:Wbem.CimNameList">
+            <summary>
+            A list of CimName objects
+            </summary>
+        </member>
+        <member name="M:Wbem.CimNameList.#ctor">
+            <summary>
+            Creates an empty CimNameList
+            </summary>
+        </member>
+        <member name="M:Wbem.CimNameList.#ctor(Wbem.CimName[])">
+            <summary>
+            Creates a new CimNameList with the given CimNames
+            </summary>
+            <param name="items"></param>
+        </member>
+        <member name="T:Wbem.CimValueReference">
+            <summary>
+            A single Cim refernce property value
+            </summary>
+        </member>
+        <member name="M:Wbem.CimValueReference.#ctor(System.Object)">
+            <summary>
+            Creates a new CimValueReference with the given object
+            </summary>
+            <param name="cimObject"></param>
+        </member>
+        <member name="P:Wbem.CimValueReference.CimObject">
+            <summary>
+            Gets or sets the CimObject
+            </summary>
+        </member>
+        <member name="P:Wbem.CimValueReference.Type">
+            <summary>
+            Gets the type of the reference
+            </summary>
+        </member>
+        <member name="P:Wbem.CimValueReference.IsSet">
+            <summary>
+            Returns true if the the CimObject property is not null
+            </summary>
+        </member>
+        <member name="T:Wbem.CimName">
+            <summary>
+            The CIMName entity describes the name of a CIM Element (Class, Instance, Method, Property, Qualifier or Parameter). The value MUST be a legal CIM element name. 
+            CimName is a case insensitive string. A CimName should not include characters that define path delimiters, such as .,:;\/ unless the name is a path like 'root/cimv2'
+            </summary>
+        </member>
+        <member name="M:Wbem.CimName.#ctor(System.String)">
+            <summary>
+            Creates a CimName object and sets the value of the object
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:Wbem.CimName.ToString">
+            <summary>
+            Returns the value of the CimName object.
+            </summary>
+            <returns>CimName.Name</returns>
+        </member>
+        <member name="M:Wbem.CimName.Equals(System.Object)">
+            <summary>
+            Compares the values of two CimName objects
+            </summary>
+            <param name="obj">object to compare</param>
+            <returns>True if the values of the CimName objects are equal</returns>
+        </member>
+        <member name="M:Wbem.CimName.GetHashCode">
+            <summary>
+            Returns the hashcode of the underlying lowercase string.
+            </summary>
+            <returns>Hashscode of the string</returns>
+        </member>
+        <member name="M:Wbem.CimName.op_Equality(Wbem.CimName,System.Object)">
+            <summary>
+            Compare a CimName object and an object
+            </summary>
+            <param name="cimName">CimName object</param>
+            <param name="obj">object value</param>
+            <returns>Returns true if the values are the same</returns>
+        </member>
+        <member name="M:Wbem.CimName.op_Inequality(Wbem.CimName,System.Object)">
+            <summary>
+            Compare a CimName object and an object
+            </summary>
+            <param name="cimName">CimName object</param>
+            <param name="obj">string value</param>
+            <returns>Returns true if the values are not the same</returns>        
+        </member>
+        <member name="M:Wbem.CimName.op_Implicit(System.String)~Wbem.CimName">
+            <summary>
+            Implicitly convert from a string to CimName.
+            </summary>
+            <param name="value">String to convert</param>
+            <returns>CimName</returns>
+        </member>
+        <member name="M:Wbem.CimName.CompareTo(System.Object)">
+            <summary>
+            Sortable by the string Name member
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Wbem.CimName.Value">
+            <summary>
+            Sets the value of the CimName object. CimName should not include path delimiting characters, such as .,:;\/
+            </summary>
+        </member>
+        <member name="P:Wbem.CimName.Schema">
+            <summary>
+            Returns the prefix of the CimName. "CIM_NFS" returns "CIM"
+            </summary>
+        </member>
+        <member name="P:Wbem.CimName.IsSet">
+            <summary>
+            Returns true is the value of the name is not null
+            </summary>
+        </member>
+        <member name="T:Wbem.CimKeyValue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Wbem.CimKeyValue.ValueType">
+            <summary>
+            Gets or sets the ValueType: Valid types are "string", "boolean", or "numeric"
+            </summary>
+        </member>
+        <member name="P:Wbem.CimKeyValue.Type">
+            <summary>
+            Gets or sets the CimType for the data.
+            </summary>
+        </member>
+        <member name="P:Wbem.CimKeyValue.Value">
+            <summary>
+            Gets or sets the value
+            </summary>
+        </member>
+        <member name="T:Wbem.CimClass">
+            <summary>
+            Represents a CIM class definition
+            </summary>
+        </member>
+        <member name="M:Wbem.CimClass.#ctor">
+            <summary>
+            Creates an empty CimClass object
+            </summary>
+        </member>
+        <member name="M:Wbem.CimClass.#ctor(Wbem.CimName)">
+            <summary>
+            Creates a new CimClass with the class name
+            </summary>
+            <param name="className">Name of the class</param>
+        </member>
+        <member name="M:Wbem.CimClass.#ctor(Wbem.CimName,Wbem.CimName)">
+            <summary>
+            Creates a new CimClass with a class name, and parent class
+            </summary>
+            <param name="className">Name of the class</param>
+            <param name="superClass">Name of the parent class</param>
+        </member>
+        <member name="P:Wbem.CimClass.Methods">
+            <summary>
+            Gets or sets the methods of this CimClass object
+            </summary>
+            <example>
+            <code>
+            CimClass curClass = new CimClass();
+            Console.WriteLine(curClass.Methods["meth1"].Name);
+            </code>
+            </example>
+        </member>
+        <member name="P:Wbem.CimClass.ClassName">
+            <summary>
+            Gets or sets the name of the CimClass object
+            </summary>
+        </member>
+        <member name="P:Wbem.CimClass.SuperClass">
+            <summary>
+            Gets or sets the name of the super class
+            </summary>
+        </member>
+        <member name="P:Wbem.CimClass.IsKeyed">
+            <summary>
+            Gets or sets the flag indicating whether this class has keys
+            </summary>
+        </member>
+        <member name="P:Wbem.CimClass.IsAssociation">
+            <summary>
+            Gets or sets the flag that indicates this class is an association
+            </summary>
+        </member>
+        <member name="P:Wbem.CimClass.IsSet">
+            <summary>
+            Returns true is the class name is set for the class
+            </summary>    
+        </member>
+        <member name="P:Wbem.GetQualifierOpSettings.QualifierName">
+            <summary>
+            <para>From DMTF Spec:</para>The QualifierName input parameter identifies the Qualifier whose declaration to be retrieved.
+            </summary>
+        </member>
+        <member name="T:Wbem.CimObjectPathList">
+            <summary>
+            A list of CimObjectPath objects
+            </summary>
+        </member>
+        <member name="M:Wbem.CimXml.CimXmlReader.ReadElement(Wbem.CimXml.CimXmlReader.CimXmlElementType)">
+            <summary>
+            Matches the element and moves this.ElementType to the next one
+            </summary>
+            <param name="type">ElementType to read</param>
+        </member>
+        <member name="M:Wbem.CimXml.CimXmlReader.MatchElement(Wbem.CimXml.CimXmlReader.CimXmlElementType)">
+            <summary>
+            Compares the type to this.ElementType
+            </summary>
+            <param name="type">expected type</param>
+        </member>
+        <member name="M:Wbem.CimXml.CimXmlReader.ReadQualifierList">
+            <summary>
+            This methods begins with the first start element tag of a sequence of qualifiers
+            </summary>
+            <returns>Returns the CimQualifierList</returns>
+        </member>
+        <member name="M:Wbem.CimXml.CimXmlReader.ReadValueObjectWithPath">
+            <summary>
+            Associators and References
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Wbem.CimXml.CimXmlReader.ReadObjectPath">
+            <summary>
+            AssociatorNames and ReferenceNames
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Wbem.CimKeyBinding">
+            <summary>
+            The KeyBinding defines a single key property value binding.
+            </summary>
+        </member>
+        <member name="M:Wbem.CimKeyBinding.Equals(System.Object)">
+            <summary>
+            Compares two CimKeyBinding objects
+            </summary>
+            <param name="obj"></param>
+            <returns>Returns true if equals</returns>
+        </member>
+        <member name="M:Wbem.CimKeyBinding.op_Equality(Wbem.CimKeyBinding,Wbem.CimKeyBinding)">
+            <summary>
+            Compares two CimKeyBinding objects
+            </summary>
+            <param name="val1"></param>
+            <param name="val2"></param>
+            <returns>Returns true if they are equal</returns>
+        </member>
+        <member name="M:Wbem.CimKeyBinding.CompareTo(System.Object)">
+            <summary>
+            Sortable by CimName Name member
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Wbem.CimKeyBinding.Name">
+            <summary>
+            Gets or sets the name of the KeyBinding
+            </summary>
+        </member>
+        <member name="P:Wbem.CimKeyBinding.Value">
+            <summary>
+            Gets or sets the KeyValue
+            </summary>
+        </member>
+        <member name="P:Wbem.CimKeyBinding.Type">
+            <summary>
+            Gets the Type of the value
+            </summary>
+        </member>
+    </members>
+</doc>

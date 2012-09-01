@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleRunner", "examples\ExampleRunner.csproj", "{9DC965DB-37BE-410B-AC4F-762F11BAF637}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wbem-sharp", "src\wbem-sharp.csproj", "{C1AB09FA-82A4-47A2-AFD4-80235928BB9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wbem-tests", "tests\nunit\wbem-tests.csproj", "{FACEAE0F-B8C5-4B34-B95F-90419A7DDC3B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9DC965DB-37BE-410B-AC4F-762F11BAF637}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DC965DB-37BE-410B-AC4F-762F11BAF637}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DC965DB-37BE-410B-AC4F-762F11BAF637}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DC965DB-37BE-410B-AC4F-762F11BAF637}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1AB09FA-82A4-47A2-AFD4-80235928BB9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1AB09FA-82A4-47A2-AFD4-80235928BB9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1AB09FA-82A4-47A2-AFD4-80235928BB9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1AB09FA-82A4-47A2-AFD4-80235928BB9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FACEAE0F-B8C5-4B34-B95F-90419A7DDC3B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FACEAE0F-B8C5-4B34-B95F-90419A7DDC3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FACEAE0F-B8C5-4B34-B95F-90419A7DDC3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FACEAE0F-B8C5-4B34-B95F-90419A7DDC3B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

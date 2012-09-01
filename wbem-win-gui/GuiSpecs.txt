@@ -1,0 +1,14 @@
+GUI Rewrite Ideas
+
+1. Nautilus style browsing
+
+2. Callback driven UI updates
+
+3. gtk#
+
+4. Hierarchical Inherited Components (like our forms now, but more fine grain)
+
+5. Do ListViewUtils type static classes inside of a parent class to the components so they can
+   be more specific (like Instance Listviews vs Class ListViews)
+
+6. 

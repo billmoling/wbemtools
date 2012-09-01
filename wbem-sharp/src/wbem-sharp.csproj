@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C1AB09FA-82A4-47A2-AFD4-80235928BB9A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Wbem</RootNamespace>
+    <AssemblyName>wbem-sharp</AssemblyName>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\doc\wbem-sharp.xml</DocumentationFile>
+    <WarningsAsErrors>3000 3001 3002 3003 3004 3005 3006 3007 3008 3009 3010 3011 3012 3013 3014 3015 3016 3017 3018 3019 3021 3022 3023 3024 3026</WarningsAsErrors>
+    <OutputType>Library</OutputType>
+    <AssemblyName>wbem-sharp</AssemblyName>
+    <RootNamespace>Wbem</RootNamespace>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <WarningsAsErrors>3000 3001 3002 3003 3004 3005 3006 3007 3008 3009 3010 3011 3012 3013 3014 3015 3016 3017 3018 3019 3021 3022 3023 3024 3026</WarningsAsErrors>
+    <DocumentationFile>..\doc\wbem-sharp.xml</DocumentationFile>
+    <OutputType>Library</OutputType>
+    <AssemblyName>wbem-sharp</AssemblyName>
+    <DebugSymbols>true</DebugSymbols>
+    <RootNamespace>Wbem</RootNamespace>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.core, Version=2.5.9.10348, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\..\dll\nunit.core.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.5.9.10348, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\..\dll\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseDataTypes\BaseCollection.cs" />
+    <Compile Include="BaseDataTypes\BaseDataTypeList.cs" />
+    <Compile Include="BaseDataTypes\BaseNullable.cs" />
+    <Compile Include="Batch\BatchRequest.cs" />
+    <Compile Include="Batch\BatchResponse.cs" />
+    <Compile Include="Batch\SingleRequest.cs" />
+    <Compile Include="Batch\SingleResponse.cs" />
+    <Compile Include="CimDataTypes\CimClass.cs" />
+    <Compile Include="CimDataTypes\CimClassMember.cs" />
+    <Compile Include="CimDataTypes\CimClassName.cs" />
+    <Compile Include="CimDataTypes\CimClassNamePath.cs" />
+    <Compile Include="CimDataTypes\CimClassPath.cs" />
+    <Compile Include="CimDataTypes\CimInstanceNamePath.cs" />
+    <Compile Include="CimDataTypes\CimInstancePath.cs" />
+    <Compile Include="CimDataTypes\CimMethodResponse.cs" />
+    <Compile Include="CimDataTypes\CimNamespacePath.cs" />
+    <Compile Include="CimDataTypes\CimObject.cs" />
+    <Compile Include="CimDataTypes\CimParameterValue.cs" />
+    <Compile Include="CimDataTypes\CimReturnValue.cs" />
+    <Compile Include="CimDataTypes\CimTable.cs" />
+    <Compile Include="CimDataTypes\CimTreeNode.cs" />
+    <Compile Include="CimDataTypes\NullableBool.cs" />
+    <Compile Include="CimDataTypes\CimXmlHeader.cs" />
+    <Compile Include="CimDataTypes\CimKeyBinding.cs" />
+    <Compile Include="CimDataTypes\CimKeyValue.cs" />
+    <Compile Include="CimDataTypes\CimDateTime.cs" />
+    <Compile Include="CimDataTypes\CimInstance.cs" />
+    <Compile Include="CimDataTypes\CimInstanceName.cs" />
+    <Compile Include="CimDataTypes\CimMethod.cs" />
+    <Compile Include="CimDataTypes\CimName.cs" />
+    <Compile Include="CimDataTypes\CimNamedInstance.cs" />
+    <Compile Include="CimDataTypes\CimObjectName.cs" />
+    <Compile Include="CimDataTypes\CimObjectPath.cs" />
+    <Compile Include="CimDataTypes\CimomError.cs" />
+    <Compile Include="CimDataTypes\CimParameter.cs" />
+    <Compile Include="CimDataTypes\CimParameterArray.cs" />
+    <Compile Include="CimDataTypes\CimParameterRefArray.cs" />
+    <Compile Include="CimDataTypes\CimParameterReference.cs" />
+    <Compile Include="CimDataTypes\CimProperty.cs" />
+    <Compile Include="CimDataTypes\CimPropertyArray.cs" />
+    <Compile Include="CimDataTypes\CimPropertyReference.cs" />
+    <Compile Include="CimDataTypes\CimQualifier.cs" />
+    <Compile Include="CimDataTypes\CimQualifierDeclaration.cs" />
+    <Compile Include="CimDataTypes\CimQualifierFlavor.cs" />
+    <Compile Include="CimDataTypes\CimScope.cs" />
+    <Compile Include="CimDataTypes\CimType.cs" />
+    <Compile Include="CimDataTypes\CimValueReference.cs" />
+    <Compile Include="CimDataTypes\NullableCimType.cs" />
+    <Compile Include="CimDataTypes\NullableInt32.cs" />
+    <Compile Include="CimXml\CimXmlReader.cs" />
+    <Compile Include="CimXml\CimXmlWriter.cs" />
+    <Compile Include="CimXml\CreateRequest.cs" />
+    <Compile Include="CimXml\ParseResponse.cs" />
+    <Compile Include="Collections\CimClassList.cs" />
+    <Compile Include="Collections\CimClassNamePathList.cs" />
+    <Compile Include="Collections\CimClassPathList.cs" />
+    <Compile Include="Collections\CimInstanceList.cs" />
+    <Compile Include="Collections\CimInstanceNameList.cs" />
+    <Compile Include="Collections\CimInstanceNamePathList.cs" />
+    <Compile Include="Collections\CimInstancePathList.cs" />
+    <Compile Include="Collections\CimKeyBindingList.cs" />
+    <Compile Include="Collections\CimMethodList.cs" />
+    <Compile Include="Collections\CimNameList.cs" />
+    <Compile Include="Collections\CimObjectPathList.cs" />
+    <Compile Include="Collections\CimParameterList.cs" />
+    <Compile Include="Collections\CimParameterValueList.cs" />
+    <Compile Include="Collections\CimPropertyList.cs" />
+    <Compile Include="Collections\CimPropertyReferenceList.cs" />
+    <Compile Include="Collections\CimQualifierDeclarationList.cs" />
+    <Compile Include="Collections\CimQualifierList.cs" />
+    <Compile Include="Collections\CimTreeNodeList.cs" />
+    <Compile Include="Collections\CimValueList.cs" />
+    <Compile Include="Net\CimomRequest.cs" />
+    <Compile Include="Net\CimomResponse.cs" />
+    <Compile Include="OpSettings\AssociatorNamesOpSettings.cs" />
+    <Compile Include="OpSettings\AssociatorsOpSettings.cs" />
+    <Compile Include="OpSettings\CreateClassOpSettings.cs" />
+    <Compile Include="OpSettings\CreateInstanceOpSettings.cs" />
+    <Compile Include="OpSettings\DeleteClassOpSettings.cs" />
+    <Compile Include="OpSettings\DeleteInstanceOpSettings.cs" />
+    <Compile Include="OpSettings\DeleteQualifierOpSettings.cs" />
+    <Compile Include="OpSettings\EnumerateClassesOpSettings.cs" />
+    <Compile Include="OpSettings\EnumerateClassNamesOpSettings.cs" />
+    <Compile Include="OpSettings\EnumerateInstanceNamesOpSettings.cs" />
+    <Compile Include="OpSettings\EnumerateInstancesOpSettings.cs" />
+    <Compile Include="OpSettings\EnumerateLeafClassesOpSettings.cs" />
+    <Compile Include="OpSettings\EnumerateQualifiersOpSettings.cs" />
+    <Compile Include="OpSettings\ExecQueryOpSettings.cs" />
+    <Compile Include="OpSettings\ExecuteQueryOpSettings.cs" />
+    <Compile Include="OpSettings\GetInstanceOpSettings.cs" />
+    <Compile Include="OpSettings\GetPropertyOpSettings.cs" />
+    <Compile Include="OpSettings\GetQualifierOpSettings.cs" />
+    <Compile Include="OpSettings\InvokeMethodOpSettings.cs" />
+    <Compile Include="OpSettings\ModifyClassOpSettings.cs" />
+    <Compile Include="OpSettings\ModifyInstanceOpSettings.cs" />
+    <Compile Include="OpSettings\OpSettingsClasses.cs" />
+    <Compile Include="OpSettings\GetClassOpSettings.cs" />
+    <Compile Include="OpSettings\ReferenceNamesOpSettings.cs" />
+    <Compile Include="OpSettings\ReferencesOpSettings.cs" />
+    <Compile Include="OpSettings\SetPropertyOpSettings.cs" />
+    <Compile Include="OpSettings\SetQualifierOpSettings.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WbemClient.cs" />
+    <Compile Include="CimDataTypes\CimClassTest.cs" />
+    <Compile Include="CimDataTypes\CimPropertyTest.cs" />
+    <Compile Include="WbemClientTest.cs" />
+    <Compile Include="WbemSharpTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+    <ProjectGuid>{C1AB09FA-82A4-47A2-AFD4-80235928BB9A}</ProjectGuid>
+    <RootNamespace>Wbem</RootNamespace>
+  </PropertyGroup>
+</Project>

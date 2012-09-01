@@ -1,0 +1,59 @@
+2.0.0 - Wbem Notifications
+
+1.6.0 - Compressed Cimom Messages
+
+1.4.0 - Chunking (support for the "infinite instances" provider)
+
+1.2.0 - Caching API
+
+1.0.0 - 
+	* Finalize API
+	* Submit to Autobuild
+
+0.8.0 - 
+	* Finalize Documentation
+		Make sure every class has Xml Comments
+	* Make sure that all APIs use CimName instead of string where appropriate
+	* Performance testing
+		- Profile it
+		- Memory consumption reduction
+
+0.6.0 - 
+	* Exceptions in the DLL (Add a ton, check existing to make sure messages make sense)
+	* Test against pegasus
+	* Check to make sure that we use the IsSet when creating the Xml so we don't create Xml that we shouldn't
+
+0.4.0 - 
+	* Check the Empty Property vs. Null Property problem for all datastructures (has to do with IsSet)
+	* Add NUnit testcases
+	* Fix DS' related to the Invoke method stuff  (twiest will do)
+	* Xml Comments for Documentation
+		High Priority Classes: 
+			*OpSettings			(twiest will do)
+			WbemClient.*			(twiest will do)
+			CimDataTypes (and Lists)	(rhowell will do)
+
+	* Fill out the example classes
+		- Basic
+			X GetClass
+			X EnumerateClasses
+			X EnumerateClassNames
+			X GetInstance
+			X EnumerateInstances
+			X EnumerateInstanceNames
+			X EnumerateNamespaces
+		- Medium 
+			* OpSettings for all Basic examples
+			* InvokeMethod stuff
+		- advanced
+			* Associators
+			* References
+			* Batch operations
+			X CreateClass
+			* CreateInstance
+			X DeleteClass
+			* DeleteInstance
+			* ModifyClass
+			* ModifyInstance
+
+	* Go through and delete commented out code (general cleanup)	(rhowell will do)
