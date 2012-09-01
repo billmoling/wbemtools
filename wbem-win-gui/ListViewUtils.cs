@@ -36,6 +36,20 @@ namespace DemoGui
             return list;
         }
 
+        public static List<ListViewItem> ToList(CimInstance curInstance)
+        {
+            List<ListViewItem> list = new List<ListViewItem>();
+
+            //list.Add(new ListViewItem(new string[] { "HasKeyProperties", "Attribute", curInstance.HasKeyProperty.ToString() }, (int)ImageUtils.ImageIndex.Attribute));
+            //list.Add(new ListViewItem(new string[] { "IsAssociation", "Attribute", curInstance.IsAssociation.ToString() }, (int)ImageUtils.ImageIndex.Attribute));
+            //list.Add(new ListViewItem(new string[] { "IsKeyed", "Attribute", curInstance.IsKeyed.ToString() }, (int)ImageUtils.ImageIndex.Attribute));
+            list.AddRange(ToList(curInstance.Qualifiers));
+            list.AddRange(ToList(curInstance.Properties, curInstance.ClassName));
+            //list.AddRange(ToList(curInstance.Methods, curInstance.ClassName));
+
+            return list;
+        }
+
         /// <summary>
         /// Creates a list of ListViewItems (Excluding a 'description' qualifier
         /// </summary>

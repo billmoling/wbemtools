@@ -55,7 +55,7 @@ namespace Wbem
             ReqType = RequestType.GetClass;
 
             ClassName = className;
-            LocalOnly = true;
+            LocalOnly = false;
             IncludeQualifiers = true;
             IncludeClassOrigin = false;
             PropertyList = null;

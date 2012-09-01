@@ -30,9 +30,7 @@ namespace DemoGui
         /// </summary>
         private void InitializeComponent()
         {
-			Console.WriteLine("inside InitializeComponent");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthForm));
-            Console.WriteLine("passed ComponentModel call");
             this.uxTabCtl_Connection = new System.Windows.Forms.TabControl();
             this.uxTab_Connection = new System.Windows.Forms.TabPage();
             this.uxbtnBrowseNamespaces = new System.Windows.Forms.Button();
@@ -58,14 +56,14 @@ namespace DemoGui
             // 
             // uxTabCtl_Connection
             // 
-            this.uxTabCtl_Connection.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.uxTabCtl_Connection.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.uxTabCtl_Connection.Controls.Add(this.uxTab_Connection);
             this.uxTabCtl_Connection.Controls.Add(this.uxTab_Advanced);
             this.uxTabCtl_Connection.Location = new System.Drawing.Point(0, 0);
             this.uxTabCtl_Connection.Name = "uxTabCtl_Connection";
             this.uxTabCtl_Connection.SelectedIndex = 0;
-            this.uxTabCtl_Connection.Size = new System.Drawing.Size(295, 197);
+            this.uxTabCtl_Connection.Size = new System.Drawing.Size(295, 182);
             this.uxTabCtl_Connection.TabIndex = 20;
             this.uxTabCtl_Connection.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.uxTabCtl_Connection_KeyPress);
             // 
@@ -84,16 +82,16 @@ namespace DemoGui
             this.uxTab_Connection.Location = new System.Drawing.Point(4, 22);
             this.uxTab_Connection.Name = "uxTab_Connection";
             this.uxTab_Connection.Padding = new System.Windows.Forms.Padding(3);
-            this.uxTab_Connection.Size = new System.Drawing.Size(287, 171);
+            this.uxTab_Connection.Size = new System.Drawing.Size(287, 156);
             this.uxTab_Connection.TabIndex = 0;
             this.uxTab_Connection.Text = "Connection";
             this.uxTab_Connection.UseVisualStyleBackColor = true;
             // 
             // uxbtnBrowseNamespaces
             // 
-            this.uxbtnBrowseNamespaces.Location = new System.Drawing.Point(251, 113);
+            this.uxbtnBrowseNamespaces.Location = new System.Drawing.Point(251, 104);
             this.uxbtnBrowseNamespaces.Name = "uxbtnBrowseNamespaces";
-            this.uxbtnBrowseNamespaces.Size = new System.Drawing.Size(24, 20);
+            this.uxbtnBrowseNamespaces.Size = new System.Drawing.Size(24, 18);
             this.uxbtnBrowseNamespaces.TabIndex = 8;
             this.uxbtnBrowseNamespaces.Text = "...";
             this.uxbtnBrowseNamespaces.UseVisualStyleBackColor = true;
@@ -102,11 +100,9 @@ namespace DemoGui
             // uxChkBx_UseSSL
             // 
             this.uxChkBx_UseSSL.AutoSize = true;
-            this.uxChkBx_UseSSL.Checked = true;
-            this.uxChkBx_UseSSL.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.uxChkBx_UseSSL.Location = new System.Drawing.Point(111, 143);
+            this.uxChkBx_UseSSL.Location = new System.Drawing.Point(111, 132);
             this.uxChkBx_UseSSL.Name = "uxChkBx_UseSSL";
-            this.uxChkBx_UseSSL.Size = new System.Drawing.Size(68, 17);
+            this.uxChkBx_UseSSL.Size = new System.Drawing.Size(66, 16);
             this.uxChkBx_UseSSL.TabIndex = 5;
             this.uxChkBx_UseSSL.Text = "Use SSL";
             this.uxChkBx_UseSSL.UseVisualStyleBackColor = true;
@@ -114,67 +110,71 @@ namespace DemoGui
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 116);
+            this.label5.Location = new System.Drawing.Point(10, 107);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 13);
+            this.label5.Size = new System.Drawing.Size(71, 12);
             this.label5.TabIndex = 7;
             this.label5.Text = "Name Space:";
             // 
             // uxTxtBox_Namespace
             // 
-            this.uxTxtBox_Namespace.Location = new System.Drawing.Point(88, 113);
+            this.uxTxtBox_Namespace.Location = new System.Drawing.Point(88, 104);
             this.uxTxtBox_Namespace.Name = "uxTxtBox_Namespace";
-            this.uxTxtBox_Namespace.Size = new System.Drawing.Size(157, 20);
+            this.uxTxtBox_Namespace.Size = new System.Drawing.Size(157, 21);
             this.uxTxtBox_Namespace.TabIndex = 3;
+            this.uxTxtBox_Namespace.Text = "root/cimv2";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(19, 90);
+            this.label4.Location = new System.Drawing.Point(19, 83);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 13);
+            this.label4.Size = new System.Drawing.Size(65, 12);
             this.label4.TabIndex = 5;
             this.label4.Text = "Host Name:";
             // 
             // uxTxtBox_Hostname
             // 
-            this.uxTxtBox_Hostname.Location = new System.Drawing.Point(88, 87);
+            this.uxTxtBox_Hostname.Location = new System.Drawing.Point(88, 80);
             this.uxTxtBox_Hostname.Name = "uxTxtBox_Hostname";
-            this.uxTxtBox_Hostname.Size = new System.Drawing.Size(187, 20);
+            this.uxTxtBox_Hostname.Size = new System.Drawing.Size(187, 21);
             this.uxTxtBox_Hostname.TabIndex = 2;
+            this.uxTxtBox_Hostname.Text = "127.0.0.1";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 51);
+            this.label3.Location = new System.Drawing.Point(26, 47);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 13);
+            this.label3.Size = new System.Drawing.Size(59, 12);
             this.label3.TabIndex = 3;
             this.label3.Text = "Password:";
             // 
             // uxTxtBox_Password
             // 
-            this.uxTxtBox_Password.Location = new System.Drawing.Point(88, 48);
+            this.uxTxtBox_Password.Location = new System.Drawing.Point(88, 44);
             this.uxTxtBox_Password.Name = "uxTxtBox_Password";
-            this.uxTxtBox_Password.Size = new System.Drawing.Size(187, 20);
+            this.uxTxtBox_Password.Size = new System.Drawing.Size(187, 21);
             this.uxTxtBox_Password.TabIndex = 1;
+            this.uxTxtBox_Password.Text = "billmo";
             this.uxTxtBox_Password.UseSystemPasswordChar = true;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 25);
+            this.label2.Location = new System.Drawing.Point(19, 23);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 13);
+            this.label2.Size = new System.Drawing.Size(65, 12);
             this.label2.TabIndex = 1;
             this.label2.Text = "User Name:";
             // 
             // uxTxtBox_Username
             // 
-            this.uxTxtBox_Username.Location = new System.Drawing.Point(88, 22);
+            this.uxTxtBox_Username.Location = new System.Drawing.Point(88, 20);
             this.uxTxtBox_Username.Name = "uxTxtBox_Username";
-            this.uxTxtBox_Username.Size = new System.Drawing.Size(187, 20);
+            this.uxTxtBox_Username.Size = new System.Drawing.Size(187, 21);
             this.uxTxtBox_Username.TabIndex = 0;
+            this.uxTxtBox_Username.Text = "administrator";
             // 
             // uxTab_Advanced
             // 
@@ -184,7 +184,7 @@ namespace DemoGui
             this.uxTab_Advanced.Location = new System.Drawing.Point(4, 22);
             this.uxTab_Advanced.Name = "uxTab_Advanced";
             this.uxTab_Advanced.Padding = new System.Windows.Forms.Padding(3);
-            this.uxTab_Advanced.Size = new System.Drawing.Size(287, 171);
+            this.uxTab_Advanced.Size = new System.Drawing.Size(287, 156);
             this.uxTab_Advanced.TabIndex = 1;
             this.uxTab_Advanced.Text = "Advanced";
             this.uxTab_Advanced.UseVisualStyleBackColor = true;
@@ -192,9 +192,9 @@ namespace DemoGui
             // uxChkBx_UseCustomPort
             // 
             this.uxChkBx_UseCustomPort.AutoSize = true;
-            this.uxChkBx_UseCustomPort.Location = new System.Drawing.Point(91, 40);
+            this.uxChkBx_UseCustomPort.Location = new System.Drawing.Point(91, 37);
             this.uxChkBx_UseCustomPort.Name = "uxChkBx_UseCustomPort";
-            this.uxChkBx_UseCustomPort.Size = new System.Drawing.Size(105, 17);
+            this.uxChkBx_UseCustomPort.Size = new System.Drawing.Size(114, 16);
             this.uxChkBx_UseCustomPort.TabIndex = 0;
             this.uxChkBx_UseCustomPort.Text = "Use Custom Port";
             this.uxChkBx_UseCustomPort.UseVisualStyleBackColor = true;
@@ -203,14 +203,14 @@ namespace DemoGui
             // uxNumUpDn_Port
             // 
             this.uxNumUpDn_Port.Enabled = false;
-            this.uxNumUpDn_Port.Location = new System.Drawing.Point(125, 64);
+            this.uxNumUpDn_Port.Location = new System.Drawing.Point(125, 59);
             this.uxNumUpDn_Port.Maximum = new decimal(new int[] {
             65535,
             0,
             0,
             0});
             this.uxNumUpDn_Port.Name = "uxNumUpDn_Port";
-            this.uxNumUpDn_Port.Size = new System.Drawing.Size(64, 20);
+            this.uxNumUpDn_Port.Size = new System.Drawing.Size(64, 21);
             this.uxNumUpDn_Port.TabIndex = 1;
             this.uxNumUpDn_Port.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.uxNumUpDn_Port.Value = new decimal(new int[] {
@@ -222,18 +222,18 @@ namespace DemoGui
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(90, 66);
+            this.label1.Location = new System.Drawing.Point(90, 61);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.Size = new System.Drawing.Size(35, 12);
             this.label1.TabIndex = 0;
             this.label1.Text = "Port:";
             // 
             // uxBtn_Login
             // 
             this.uxBtn_Login.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.uxBtn_Login.Location = new System.Drawing.Point(109, 215);
+            this.uxBtn_Login.Location = new System.Drawing.Point(109, 198);
             this.uxBtn_Login.Name = "uxBtn_Login";
-            this.uxBtn_Login.Size = new System.Drawing.Size(75, 23);
+            this.uxBtn_Login.Size = new System.Drawing.Size(75, 21);
             this.uxBtn_Login.TabIndex = 6;
             this.uxBtn_Login.Text = "&Login";
             this.uxBtn_Login.UseVisualStyleBackColor = true;
@@ -241,12 +241,11 @@ namespace DemoGui
             this.uxBtn_Login.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.uxTabCtl_Connection_KeyPress);
             // 
             // AuthForm
-            //
-			
+            // 
             this.AcceptButton = this.uxBtn_Login;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 250);
+            this.ClientSize = new System.Drawing.Size(292, 231);
             this.Controls.Add(this.uxBtn_Login);
             this.Controls.Add(this.uxTabCtl_Connection);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -254,16 +253,15 @@ namespace DemoGui
             this.Name = "AuthForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login...";
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.uxTabCtl_Connection_KeyPress);
             this.Load += new System.EventHandler(this.AuthForm_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.uxTabCtl_Connection_KeyPress);
             this.uxTabCtl_Connection.ResumeLayout(false);
             this.uxTab_Connection.ResumeLayout(false);
             this.uxTab_Connection.PerformLayout();
             this.uxTab_Advanced.ResumeLayout(false);
             this.uxTab_Advanced.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.uxNumUpDn_Port)).EndInit();
-			this.ResumeLayout(false);
-			
+            ((System.ComponentModel.ISupportInitialize)(this.uxNumUpDn_Port)).EndInit();
+            this.ResumeLayout(false);
 
         }
 

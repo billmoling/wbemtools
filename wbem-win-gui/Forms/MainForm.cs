@@ -220,6 +220,49 @@ namespace DemoGui
 
             
         }
+
+        private void GetInstance(string instanceName, string parentName)
+        {
+            //int n = className.IndexOf("_") + 1;
+
+
+            //string ClasNameWithoutCounter = className; //className.Substring(n, className.Length - n);
+
+            CimInstanceList ChildrenList = mainWbemClient.EnumerateInstances(parentName);
+            for (int i = 0; i < ChildrenList.Count; i++)
+            {
+                if (ChildrenList[i].Properties["Caption"].Value == instanceName)
+                {
+                    CimInstance CurInstance = ChildrenList[i];
+                    CimInstance Instance1 = mainWbemClient.GetInstance(CurInstance.InstanceName);
+                    //CimTreeNode Node3 = new CimTreeNode(CurInstance.Properties["Caption"].Value);
+
+                    //GetInstanceOpSettings gcs = new GetInstanceOpSettings(CurInstance.InstanceName);
+                    //gcs.IncludeClassOrigin = true;
+                    //gcs.IncludeQualifiers = true;
+                    //gcs.LocalOnly = false;
+
+                    //CimClass tmpClass;
+                    try
+                    {
+                        //tmpClass = mainWbemClient.GetInstance(gcs);
+                        DisplayList(Instance1);
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show("Exception: " + e.Message);
+                        return;
+                    }
+
+                    break;
+                }
+            }
+
+
+
+
+        }
+
         #endregion
 
         #region Display helpers
@@ -269,6 +312,15 @@ namespace DemoGui
             DisplayListStart();
             statusStrip1.Items[0].Text = "Count: 1";
             List<ListViewItem> list = ListViewUtils.ToList(curClass);
+            uxLstView_Class.Items.AddRange(list.ToArray());
+            DisplayListEnd();
+        }
+
+        private void DisplayList(CimInstance curInstance)
+        {
+            DisplayListStart();
+            statusStrip1.Items[0].Text = "Count: 1";
+            List<ListViewItem> list = ListViewUtils.ToList(curInstance);
             uxLstView_Class.Items.AddRange(list.ToArray());
             DisplayListEnd();
         }
@@ -422,14 +474,24 @@ namespace DemoGui
             if ((node == null) || (node == treeView1.Nodes[0]) || (node.Text == string.Empty))
                 return;
 
+            //int n = node.Text.IndexOf("_") + 1;
+            string ClasNameWithoutCounter = node.Text; //node.Text.Substring(n, node.Text.Length - n);
+
             switch (uxtabControl.SelectedIndex)
             {
                 case 0:
-                    GetClass(node.Text);
+                    if (node.Level == 3)
+                    {
+                        GetInstance(ClasNameWithoutCounter, node.Parent.Name);
+                    }
+                    else
+                    {
+                        GetClass(ClasNameWithoutCounter);
+                    }
                     break;
 
                 case 1:
-                    EnumerateInstanceNames(node.Text);                    
+                    EnumerateInstanceNames(ClasNameWithoutCounter);                    
                     break;
             }                        
         }
@@ -602,9 +664,11 @@ namespace DemoGui
 
         private void mnuExecQuery_Click(object sender, EventArgs e)
         {
-            
-            string queryLanguage = "WQL";
-            string query = "SELECT * FROM meta_class WHERE __This ISA \"CIM_NFS\"";
+
+            //MessageBox.Show("Not implemented yet");
+
+            string queryLanguage = "wql2";
+            string query = "SELECT VariableSpeed FROM OMC_Fan Where Caption=\"Fan 6\"";
             QueryForm form = new QueryForm(query);
 
             DialogResult result = form.ShowDialog();
@@ -613,9 +677,50 @@ namespace DemoGui
                 query = QueryForm.Query;
                 try
                 {
+                    //object Node1 = mainWbemClient.ExecQuery(queryLanguage, query);
+
+                    CimInstancePathList list = (CimInstancePathList)mainWbemClient.ExecQuery(queryLanguage, query);
+
+                    //CheckSingleResponse(response, typeof(CimInstancePathList));
+
+                    //MessageBox.Show(list.Count.ToString());
+
+                    //XMLList[] ChildrenList = mainWbemClient.ExecQuery(queryLanguage, query);
+                    //for (int i = 0; i < ChildrenList.Count; i++)
+                    //{
+                        if (list.Count>0)
+                        {
+                            CimInstance CurInstance = list[0].Instance;
+                            //CimInstance Instance1 = mainWbemClient.GetInstance(CurInstance.InstanceName);
+                            //CimTreeNode Node3 = new CimTreeNode(CurInstance.Properties["Caption"].Value);
+
+                            //GetInstanceOpSettings gcs = new GetInstanceOpSettings(CurInstance.InstanceName);
+                            //gcs.IncludeClassOrigin = true;
+                            //gcs.IncludeQualifiers = true;
+                            //gcs.LocalOnly = false;
+
+                            //CimClass tmpClass;
+                            try
+                            {
+                                //tmpClass = mainWbemClient.GetInstance(gcs);
+                                DisplayList(CurInstance);
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Exception: " + ex.Message);
+                                return;
+                            }
+
+                            //break;
+                        }
+                    //}
+                    
+                    
+                    
+                    
                     //CimValueObjectWithPathList list = mainWbemClient.ExecQuery(queryLanguage, query);
                     //statusStrip1.Items[0].Text = "Count: " + list.Count.ToString();
-                    throw new Exception("Not implemented yet");
+                    //throw new Exception("Not implemented yet");
                 }
                 catch (Exception ex)
                 {
