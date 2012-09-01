@@ -60,7 +60,8 @@ namespace Wbem
         private CimName _name = null;
         private NullableCimType _type = null;
         private CimName _classOrigin = null;
-        private NullableBool _isPropagated = null;        
+        private NullableBool _isPropagated = null;
+        private NullableBool _isEmbeddedObject = null; 
         
 
         #region Constructors
@@ -144,6 +145,21 @@ namespace Wbem
         //{
         //    get { return (Name.IsSet && Type.IsSet); }
         //}
+
+        /// <summary>
+        /// Gets or sets the flag indicating whether or not this property is an embedded object type
+        /// </summary>
+        public NullableBool isEmbeddedObject
+        {
+            get
+            {
+                if (_isEmbeddedObject == null)
+                    _isEmbeddedObject = new NullableBool(false);
+                return _isEmbeddedObject;
+            }
+            set { _isEmbeddedObject = value; }
+        }
+
         #endregion
 
         #region Methods

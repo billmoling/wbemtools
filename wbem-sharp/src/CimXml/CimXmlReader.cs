@@ -222,6 +222,10 @@ namespace Wbem.CimXml
         #region Constructors
         public CimXmlReader(string xml)
         {
+            if (string.IsNullOrEmpty(xml))
+            {
+                throw new NullReferenceException("No readable CIM Xml");
+            }
             // Temporary hack to work around bug number 207586
             //
             int indexOfBellChar = xml.IndexOf((char)0x07);
@@ -748,6 +752,11 @@ namespace Wbem.CimXml
         #region General Purpose Methods
         public void TrimStart()
         {
+            if (_mainXmlTextReader.EOF)
+            {
+                return;
+            }
+
             // Eliminate all empty elements
             // This seems to happen because of \n's in the XML stream.
             while ((_mainXmlTextReader.NodeType == XmlNodeType.Whitespace) ||
@@ -839,8 +848,8 @@ namespace Wbem.CimXml
         /// <param name="type">expected type</param>
         private void MatchElement(CimXmlElementType expectedType)
         {
-            if (this.ElementType != expectedType)
-                throw (new Exception("Not a " + expectedType.ToString() + " element"));
+            //if (this.ElementType != expectedType)
+            //    throw (new Exception("Not a " + expectedType.ToString() + " element"));
         }
         #endregion
 
@@ -1258,7 +1267,9 @@ namespace Wbem.CimXml
 
             NextElement();  // Move off of the attributes
 
-            while (this.ElementType != CimXmlElementType.ErrorEnd)
+            while (this.ElementType != CimXmlElementType.ErrorEnd && 
+                this.ElementType != CimXmlElementType.SimpleResponseEnd &&
+                this.ElementType != CimXmlElementType.IMethodResponseEnd)
             {
                 retVal.Instances.Add(ReadInstance());
             }
@@ -1743,6 +1754,10 @@ namespace Wbem.CimXml
 
                     case "propagated":
                         newCimProperty.IsPropagated = _mainXmlTextReader.Value;
+                        break;
+
+                    case "embeddedobject":
+                        newCimProperty.isEmbeddedObject = true;
                         break;
 
                     default:
@@ -2662,7 +2677,7 @@ namespace Wbem.CimXml
             [...]
             */
             #endregion
-            MatchElement(CimXmlElementType.InstanceStart);
+            //MatchElement(CimXmlElementType.InstanceStart);
 
             CimInstance newCimInstance = new CimInstance(string.Empty);
 

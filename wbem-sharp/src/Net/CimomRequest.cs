@@ -53,7 +53,7 @@ namespace Wbem.Net
         {
             // Build a CimomRequest off of a new HttpRequest
             httpReq = (HttpWebRequest)WebRequest.Create(uri);
-            //httpReq.KeepAlive = false;
+            httpReq.KeepAlive = true; //Needed for https connections
 
             // The namespace needs a 2 digit number between 00 and 99
             nameSpaceValue = rand.Next(10).ToString() + rand.Next(10).ToString();
@@ -61,17 +61,18 @@ namespace Wbem.Net
             // Setup the http request
             httpReq.PreAuthenticate = false;            
             httpReq.ProtocolVersion = HttpVersion.Version11;
-            httpReq.Method = "M-POST";
+            httpReq.Method = "POST";
             httpReq.ContentType = "application/xml;charset=\"UTF-8\"";
-            httpReq.Accept = "text/xml,application/xml";
+            httpReq.Accept = "text/html, text/xml, application/xml";
 
+            ServicePointManager.Expect100Continue = false;
 
             // I get an "Unknown Extension URI" when I try to use this URL :(
             //Headers.Add("Man", "http://www.dmtf.org/standards/documents/WBEM/DSP200.html;ns=" + nameSpaceValue);
 
             // Add the Http/CIM headers
-            Headers.Add("Man", "http://www.dmtf.org/cim/mapping/http/v1.0;ns=" + nameSpaceValue);
-            Headers.Add(nameSpaceValue.ToString() + "-CIMProtocolVersion", "1.0");
+            //Headers.Add("Man", "http://www.dmtf.org/cim/mapping/http/v1.0;ns=" + nameSpaceValue);
+            Headers.Add("CIMProtocolVersion", "1.0");
             
             if (certificatePolicy == null)
                 ServicePointManager.CertificatePolicy = new AcceptAllCertificatePolicy();

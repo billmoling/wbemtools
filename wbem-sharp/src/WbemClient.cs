@@ -91,7 +91,7 @@ namespace Wbem
             Credentials = credentials;
             DefaultNamespace = defaultNamespace;
 
-            IsSecure = true;
+            IsSecure = false;
             IsAuthenticated = false;
             FakeCimom = null;
         }
@@ -551,23 +551,23 @@ namespace Wbem
         public object ExecQuery(ExecQueryOpSettings settings)
         {
             // OpenWbem doesn't support this call yet :(
-            throw new Exception("Not implemented yet");
+            //throw new Exception("Not implemented yet");
 
-            ////I think this returns a list of ValueObjectWithPath objects
-            //ParseResponse pr = new ParseResponse();
+            //I think this returns a list of ValueObjectWithPath objects
+            ParseResponse pr = new ParseResponse();
 
-            //string opXml = Wbem.CimXml.CreateRequest.ToXml(settings, this.DefaultNamespace);
-            //string respXml = ExecuteRequest("ExecQuery", opXml);
+            string opXml = Wbem.CimXml.CreateRequest.ToXml(settings, this.DefaultNamespace);
+            string respXml = ExecuteRequest("ExecQuery", opXml);
 
-            //BatchResponse responses = pr.ParseXml(respXml);
+            BatchResponse responses = pr.ParseXml(respXml);
 
-            //if (responses.Count != 1)
-            //    throw (new Exception("Not a single response to a single request"));
+            if (responses.Count != 1)
+                throw (new Exception("Not a single response to a single request"));
 
-            ////CheckSingleResponse(responses[0], SingleResponse.ResponseType.CimValueObjectWithPathList);
+            //CheckSingleResponse(responses[0], SingleResponse.ResponseType.CimValueObjectWithPathList);
 
-            
-            ////return (CimValueObjectWithPathList)responses[0].Value;
+
+            return responses[0].Value; //(CimValueObjectWithPathList)responses[0].Value;
         }
         #endregion
 
@@ -1136,13 +1136,72 @@ namespace Wbem
             
             hash.Add(className, new CimTreeNode(className));
 
+            int cnt = 0;
+            string newClassName = "";
+
             for (int i = 0; i < classList.Count; i++)
             {                
                 CimClass curClass = classList[i];
 
-                CimTreeNode curNode = new CimTreeNode(curClass.ClassName);
+                cnt += 1;
+                newClassName = curClass.ClassName.ToString(); //cnt.ToString() + "_" + curClass.ClassName;
 
-                hash.Add(curClass.ClassName, curNode);
+                CimTreeNode curNode = new CimTreeNode(newClassName);
+
+                hash.Add(newClassName, curNode);
+
+                if (curClass.SuperClass != string.Empty)
+                {
+                    if (!hash.ContainsKey(curClass.SuperClass))
+                    {
+                        hash.Add(curClass.SuperClass, new CimTreeNode(curClass.SuperClass));
+                    }
+                    hash[curClass.SuperClass].Children.Add(curNode);
+                }
+                else
+                {
+                    hash[className].Children.Add(curNode);
+                }
+
+            }
+
+            return hash[className];
+        }
+        #endregion
+
+        #region EnumerateClassHierarchyChildren
+        public CimTreeNode EnumerateClassHierarchyChildren(CimName className)
+        {
+            EnumerateClassesOpSettings ec = new EnumerateClassesOpSettings(className);
+            ec.DeepInheritance = true;
+            ec.IncludeClassOrigin = false;
+            ec.IncludeQualifiers = false;
+            ec.LocalOnly = true;
+
+
+            CimClassList classList = EnumerateClasses(ec);
+            Dictionary<CimName, CimTreeNode> hash = new Dictionary<CimName, CimTreeNode>();
+
+            if (className == null)
+            {
+                className = this.DefaultNamespace;
+            }
+
+            hash.Add(className, new CimTreeNode(className));
+
+            int cnt = 0;
+            string newClassName = "";
+
+            for (int i = 0; i < classList.Count; i++)
+            {
+                CimClass curClass = classList[i];
+
+                cnt += 1;
+                newClassName = cnt.ToString() + "_" + curClass.ClassName;
+
+                CimTreeNode curNode = new CimTreeNode(newClassName);
+
+                hash.Add(newClassName, curNode);
 
                 if (curClass.SuperClass != string.Empty)
                 {
@@ -1314,14 +1373,54 @@ namespace Wbem
                 cimReq.Headers.Add(cimReq.NameSpaceValue.ToString() + "-CIMMethod", cimOperation);
                 cimReq.Headers.Add(cimReq.NameSpaceValue.ToString() + "-CIMObject", this.DefaultNamespace.ToString());
 
-                // Put the message in the send buffer.
-                cimReq.Message = cimMessage;
+                /*
+                Java sample header
+                POST /root/cimv2 HTTP/1.1
+                Connection: Keep-alive
+                Content-type: application/xml; charset="utf-8"
+                Content-Language: en-US
+                CIMMethod: GetClass
+                CIMOperation: MethodCall
+                Authorization: Basic cm9vdDpQYXNzd29yZDE=
+                Content-length: 567
+                CIMProtocolVersion: 1.0
+                CIMObject: root/cimv2
+                Accept-Language: en-US
+                Host: 172.16.8.16
+                Cache-Control: no-cache
+                Accept: text/html, text/xml, application/xml
+                */
+
+                ////cimReq.Headers.Add("Connection", "Keep-alive");
+                //cimReq.Headers.Add("Content-Language", "en-US");
+                //cimReq.Headers.Add("Authorization", "Basic cm9vdDpQYXNzd29yZDE=");
+
+                ////cimReq.Headers.Add("CIMProtocolVersion", "1.0");
+                //cimReq.Headers.Add("Accept-Language", "en-US");
+                //cimReq.Headers.Add("Cache-Control", "no-cache");
+                ////cimReq.Headers.Add("test", "test");
+
+                //cimReq.Headers.Add("CIMOperation", "MethodCall");
+                //cimReq.Headers.Add("CIMMethod", cimOperation);
+                //cimReq.Headers.Add("CIMObject", this.DefaultNamespace.ToString());
+
+                try
+                {
+
+                    // Put the message in the send buffer.
+                    cimReq.Message = cimMessage;
 
                 // Send the buffer, and get the response.
                 cimResp = cimReq.GetResponse();
 
-                // Grab the message from the response buffer.
-                response = cimResp.Message;
+                    // Grab the message from the response buffer.
+                    response = cimResp.Message;
+                }
+                catch (Exception ex)
+                {
+                    string error = ex.Message;
+                    return null;
+                }
 
                 // See if an error occurred
                 if ((int)cimResp.StatusCode != 200)
@@ -1360,7 +1459,7 @@ namespace Wbem
                 if (desc == string.Empty)
                     desc = ((CimomError)response.Value).DescriptionFromSpec;
 
-                // We might want to create a CimomError Exception that incorporates the CimomError object
+                //TODO: We might want to create a CimomError Exception that incorporates the CimomError object
                 throw (new Exception("Cimom Error [" + ((CimomError)response.Value).ErrorCode + "]: " + desc));
             }
 
