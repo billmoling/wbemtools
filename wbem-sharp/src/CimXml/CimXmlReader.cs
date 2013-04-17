@@ -974,9 +974,15 @@ namespace Wbem.CimXml
                     ReadMultipleResponse(header);
                     break;
 
-                default:
-                    throw (new Exception("Not implemented yet"));
-            }
+				case CimXmlElementType.SimpleExportRequestStart:
+					header.ResponseNumber = 0;
+					header.IsMultipleResponse = false;
+					ReadSimpleExportRequest(header);
+					break;
+
+				default:
+					throw (new Exception("Not implemented yet"));
+			}
 
             ReadElement(CimXmlElementType.MessageEnd);
         }
@@ -1018,14 +1024,47 @@ namespace Wbem.CimXml
         }
         #endregion
 
-        #region MultipleResponse
-        public void ReadMultipleResponse(CimXmlHeader header)
-        {
-            #region DTD
-            /* 
-             <!ELEMENT MULTIRSP (SIMPLERSP,SIMPLERSP+)>
-            */
-            #endregion
+		#region SimpleExportRequest
+		public void ReadSimpleExportRequest(CimXmlHeader header)
+		{
+			#region DTD
+			/* 
+			 <SIMPLEEXPREQ>
+			*/
+			#endregion
+
+			#region Actual Xml Response
+			/*
+			[...]
+			[...]
+			 */
+			#endregion
+
+			ReadElement(CimXmlElementType.SimpleExportRequestStart);
+
+			switch (this.ElementType)
+			{
+				case CimXmlElementType.ExportMethodCallStart:
+					ReadExportMethodCall(header);
+					break;
+
+				default:
+					throw (new Exception("Not implemented yet"));
+			}
+
+			ReadElement(CimXmlElementType.SimpleResponseEnd);
+		}
+		#endregion
+
+
+		#region MultipleResponse
+		public void ReadMultipleResponse(CimXmlHeader header)
+		{
+			#region DTD
+			/* 
+			 <!ELEMENT MULTIRSP (SIMPLERSP,SIMPLERSP+)>
+			*/
+			#endregion
 
             #region Actual Xml Response
             /*
@@ -1358,16 +1397,111 @@ namespace Wbem.CimXml
         }
         #endregion
 
-        #region IMethodResponse
-        public void ReadIMethodResponse(CimXmlHeader header)
-        {
-            #region DTD
-            /* 
-             <!ELEMENT IMETHODRESPONSE (ERROR|IRETURNVALUE?)> 
-             <!ATTLIST IMETHODRESPONSE 
-                    %CIMName;>
-            */
-            #endregion
+
+		#region ReadExportMethodCall
+		public void ReadExportMethodCall(CimXmlHeader header)
+		{
+			#region DTD
+			/* 
+			
+			*/
+			#endregion
+
+			#region Actual Xml Response
+			/*
+			[...]
+			<EXPMETHODCALL NAME="ExportIndication">
+				<EXPPARAMVALUE NAME="NewIndication">
+					<INSTANCE CLASSNAME="IBM_AlertIndication">
+						<PROPERTY NAME="IndicationIdentifier" TYPE="string">
+						  <VALUE>1</VALUE>
+						</PROPERTY>
+						<PROPERTY NAME="IndicationTime" TYPE="datetime">
+						  <VALUE>20010330154200.443000+000</VALUE>
+						</PROPERTY>
+				  </INSTANCE>
+			</EXPPARAMVALUE>
+		  </EXPMETHODCALL> 
+			[...]
+			 */
+			#endregion
+
+			MatchElement(CimXmlElementType.ExportMethodCallStart);
+
+			for (int i = 0; i < _mainXmlTextReader.AttributeCount; ++i)
+			{
+				_mainXmlTextReader.MoveToAttribute(i);
+				switch (_mainXmlTextReader.Name.ToLower())
+				{
+					case "name":
+						header.MethodName = _mainXmlTextReader.Value;
+						break;
+
+					default:
+						throw (new Exception("Not implemented yet"));
+				}
+			}
+
+			if (header.MethodName == string.Empty)
+				throw (new Exception("Element doesn't have the 'Name' Attribute"));
+
+			NextElement();  // Move off of the attributes                         
+			
+			//ExportParameterValueStart
+			if (this.ElementType == CimXmlElementType.ErrorStart)
+			{
+				dataCallBack(header, ReadError());
+			}
+			else
+			{
+				
+				NextElement();
+				CimInstance ci = null;
+				if (this.ElementType == CimXmlElementType.InstanceStart)
+				{
+					ci = this.ReadInstance();
+					dataCallBack(header, ci);
+				}
+				
+			   
+				
+
+				//CimMethodResponse tmpMR = new CimMethodResponse();
+
+				//while (this.ElementType != CimXmlElementType.MethodResponseEnd)
+				//{
+				//    switch (this.ElementType)
+				//    {
+				//        case CimXmlElementType.ReturnValueStart:
+				//            tmpMR.RetVal = ReadReturnValue();
+				//            break;
+
+				//        case CimXmlElementType.ParameterValueStart:
+				//            tmpMR.ParamVals.AddRange(ReadParameterValueList());
+				//            break;
+
+				//        default:
+				//            throw (new Exception("Not implemented yet"));
+				//    }
+				//}
+
+				//dataCallBack(header, tmpMR);
+			}
+
+			ReadElement(CimXmlElementType.ExportMethodCallEnd);
+		}
+		#endregion
+
+		#region IMethodResponse
+		public void ReadIMethodResponse(CimXmlHeader header)
+		{
+			#region DTD
+			/* 
+			 <!ELEMENT IMETHODRESPONSE (ERROR|IRETURNVALUE?)> 
+			 <!ATTLIST IMETHODRESPONSE 
+					%CIMName;>
+			*/
+			#endregion
 
             #region Actual Xml Response
             /*

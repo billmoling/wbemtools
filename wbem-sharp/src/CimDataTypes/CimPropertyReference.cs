@@ -49,6 +49,7 @@ namespace Wbem
          * */
         private CimName _referenceClass = null;
         private CimValueReference _valueReference = null;
+        private CimQualifierList _qualifiers = null;
         
         //These three are inherited from base class CimProperty
         //private CimQualifiers _qualifiers;
@@ -82,6 +83,17 @@ namespace Wbem
                 return _referenceClass; 
             }
             set { _referenceClass = value; }
+        }
+
+        public CimQualifierList Qualifiers
+        {
+            get
+            {
+                if (_qualifiers == null)
+                    _qualifiers = new CimQualifierList();
+                return _qualifiers;
+            }
+            set { _qualifiers = value; }
         }
 
         /// <summary>

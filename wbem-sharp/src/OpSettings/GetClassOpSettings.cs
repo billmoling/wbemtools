@@ -54,10 +54,11 @@ namespace Wbem
         {
             ReqType = RequestType.GetClass;
 
+
             ClassName = className;
-            LocalOnly = false;
+            LocalOnly = true;
             IncludeQualifiers = true;
-            IncludeClassOrigin = false;
+            IncludeClassOrigin = true;
             PropertyList = null;
         }
         #endregion

@@ -63,6 +63,13 @@ namespace Wbem
             Name = name;
             Type = type;
         }
+
+        public CimProperty(CimName name, CimType type,string value)
+        {
+            Name = name;
+            Type = type;
+            Value = value;
+        }
         #endregion
 
         #region Properties
@@ -92,9 +99,9 @@ namespace Wbem
             	for (int i = 0; i < Qualifiers.Count; i++)
                 {
             		CimQualifier curQual = Qualifiers[i];
-                    if ( (curQual.Name == "key") &&
+                    if ( (curQual.Name.ToString().ToLower() == "key") &&
                          (curQual.Type == CimType.BOOLEAN) &&
-                         (curQual.Values[0] == "true") )                        
+                         (curQual.Values[0].ToLower() == "true") )                        
                         return true;
                 }
 

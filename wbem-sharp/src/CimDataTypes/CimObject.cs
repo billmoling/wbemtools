@@ -44,6 +44,8 @@ namespace Wbem
          * */
         private CimQualifierList _qualifiers = null;
         private CimPropertyList _properties = null;
+        private CimPropertyReferenceList _references = null;
+        
 
         #region Properties
         public abstract CimName ClassName
@@ -79,6 +81,23 @@ namespace Wbem
             }
             set { _qualifiers = value; }
         }
+
+        public CimPropertyReferenceList PropertyReferences
+        {
+            get
+            {
+                if (_references==null)
+                {
+                    _references = new CimPropertyReferenceList();
+                }
+                return _references;
+            }
+            set
+            {
+                _references = value;
+            }
+        }
+
 
         /// <summary>
         /// Returns true if the class has a property that is a key property

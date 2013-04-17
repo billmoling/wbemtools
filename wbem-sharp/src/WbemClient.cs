@@ -1349,7 +1349,7 @@ namespace Wbem
 
         #region Helpers
 
-        private string ExecuteRequest(string cimOperation, string cimMessage)
+        public string ExecuteRequest(string cimOperation, string cimMessage)
         {
             string response = string.Empty;
 
@@ -1451,7 +1451,12 @@ namespace Wbem
         }
 
         private void CheckSingleResponse(SingleResponse response, Type expectedType)
-        {            
+        {
+			//There is no actual return info from the xml when query DeleteInstance
+            if (response.MethodName.Equals("DeleteInstance"))
+            {
+                return;  
+            }
             if (response.Value.GetType() == typeof(CimomError))
             {
                 string desc = ((CimomError)response.Value).Description;

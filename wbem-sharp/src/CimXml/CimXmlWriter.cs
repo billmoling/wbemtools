@@ -36,54 +36,55 @@ using System.Text;
 
 namespace Wbem.CimXml
 {
-    public class CimXmlWriter
-    {
-        #region nested enums / classes
-        enum TagType : int
-        {
-            MultiReq,
-            SimpleReq,
-            MethodCall,
-            IMethodCall,
-            LocalInstancePath,
-            LocalNamespacePath,
-            Namespace,
-            IParameterElement,
-            ClassNameElement,
-            InstanceElement,
-            InstanceNameElement,
-            NamedInstanceElement,
-            KeyBindingElement,
-            KeyValueElement,
-            ValueArray,
-            ValueReference,
-            ValueString,
-            Class,
-            LocalClassPath,
-            Method,
-            Parameter,
-            ParameterValue,
-            Property,
-            PropertyArray,
-            PropertyReference,
-            Qualifier,
-            QualifierDeclaration,
-            Propagated,
-            NameAttributeString,
-            ValueTypeAttributeString,
-            ParameterTypeAttributeString,
-            ClassNameAttributeString,
-            ClassOriginAttributeString,
-            SuperClassAttributeString,
-            Overridable,            
-            Translatable,
-            ToSubClass,
-            ToInstance,
-            IsArray,
-            Type,
-            ElementValue,
-            EndElement
-        }
+	public class CimXmlWriter
+	{
+		#region nested enums / classes
+		enum TagType : int
+		{
+			MultiReq,
+			SimpleReq,
+			MethodCall,
+			IMethodCall,
+			LocalInstancePath,
+			LocalNamespacePath,
+			Namespace,
+			IParameterElement,
+			ClassNameElement,
+			InstanceElement,
+			InstanceNameElement,
+			NamedInstanceElement,
+			KeyBindingElement,
+			KeyValueElement,
+			ValueArray,
+			ValueReference,
+			ValueString,
+			Class,
+			LocalClassPath,
+			Method,
+			Parameter,
+			ParameterValue,
+			Property,
+			PropertyArray,
+			PropertyReference,
+			Qualifier,
+			QualifierDeclaration,
+			Propagated,
+			NameAttributeString,
+            ReferenceClass,
+			ValueTypeAttributeString,
+			ParameterTypeAttributeString,
+			ClassNameAttributeString,
+			ClassOriginAttributeString,
+			SuperClassAttributeString,
+			Overridable,            
+			Translatable,
+			ToSubClass,
+			ToInstance,
+			IsArray,
+			Type,
+			ElementValue,
+			EndElement
+		}
 
         class CimXmlOperation
         {
@@ -307,10 +308,17 @@ namespace Wbem.CimXml
         }
         
 
-        public void WriteNameAttributeString(CimName name)
+		public void WriteNameAttributeString(CimName name)
+		{
+			_body.Add(new CimXmlOperation(TagType.NameAttributeString, name.ToString()));
+			_verifyXTW.WriteAttributeString("NAME", name.ToString());
+		}
+
+        public void WriteReferenceClassAttributeString(CimName name)
         {
-            _body.Add(new CimXmlOperation(TagType.NameAttributeString, name.ToString()));
-            _verifyXTW.WriteAttributeString("NAME", name.ToString());
+            
+            _body.Add(new CimXmlOperation(TagType.ReferenceClass, name.ToString()));
+            _verifyXTW.WriteAttributeString("REFERENCECLASS", name.ToString());
         }
 
         public void WriteParameterTypeAttributeString(string paramType)
@@ -359,11 +367,11 @@ namespace Wbem.CimXml
             _verifyXTW.WriteStartElement("PROPERTY.ARRAY");
         }
 
-        public void WritePropertyReferenceElement()
-        {
-            _body.Add(new CimXmlOperation(TagType.Property));
-            _verifyXTW.WriteStartElement("PROPERTY.REFERENCE");
-        }
+		public void WritePropertyReferenceElement()
+		{
+			_body.Add(new CimXmlOperation(TagType.PropertyReference));
+			_verifyXTW.WriteStartElement("PROPERTY.REFERENCE");
+		}
 
         public void WriteQualifierElement()
         {
@@ -844,7 +852,48 @@ namespace Wbem.CimXml
             	WriteCimQualifier(qualifierList[i]);
             }
 
-        }
+		}
+
+		public void WriteCimPropertyReference(CimPropertyReference reference)
+		{
+            
+			WritePropertyReferenceElement();
+            WriteNameAttributeString(reference.Name);
+            WriteReferenceClassAttributeString(reference.ReferenceClass);
+			WriteCimQualifierList(reference.Qualifiers);
+			WriteCimValueReference(reference.ValueReference);
+			this.WriteEndElement();
+
+		}
+
+		/// <summary>
+		/// WriteCimPropertyReferenceList
+		/// </summary>
+		/// <param name="referenceList">referenceList</param>
+		public void WriteCimPropertyReferenceList(CimPropertyReferenceList referenceList)
+		{
+			#region Actual XML Request
+			// <PROPERTY.REFERENCE NAME="Filter" REFERENCECLASS="CIM_IndicationFilter">
+			//  <QUALIFIER NAME="Key" OVERRIDABLE="false" TYPE="boolean">
+			//    <VALUE>true</VALUE>
+			//  </QUALIFIER>
+			//  <VALUE.REFERENCE>
+			//  </VALUE.REFERENCE>
+			//</PROPERTY.REFERENCE>
+			#endregion
+
+			if (referenceList==null)
+			{
+				return;
+			}
+
+			for (int i = 0; i < referenceList.Count; i++)
+			{
+				WriteCimPropertyReference(referenceList[i]);
+			}
+		}
+
+
 
         public void WriteCimQualifierFlavorAttributes(CimQualifierFlavor flavor)
         {
@@ -1136,11 +1185,13 @@ namespace Wbem.CimXml
             */
             #endregion
 
-            this.WriteInstanceElement();
-            this.WriteClassNameAttributeString(instance.ClassName);
-
-            this.WriteCimQualifierList(instance.Qualifiers);
-            this.WriteCimPropertyList(instance.Properties);
+			this.WriteInstanceElement();
+			this.WriteClassNameAttributeString(instance.ClassName);
+			this.WriteCimPropertyReferenceList(instance.PropertyReferences);
+		   
+			
+			this.WriteCimQualifierList(instance.Qualifiers);
+			this.WriteCimPropertyList(instance.Properties);
 
 
             this.WriteEndElement();
@@ -1355,9 +1406,13 @@ namespace Wbem.CimXml
                         xwriter.WriteStartElement("VALUE.ARRAY");
                         break;
 
-                    case TagType.ValueReference:
-                        xwriter.WriteStartElement("VALUE.REFERENCE");
-                        break;
+					case TagType.PropertyReference:
+						xwriter.WriteStartElement("PROPERTY.REFERENCE");
+						break;
+
+					case TagType.ValueReference:
+						xwriter.WriteStartElement("VALUE.REFERENCE");
+						break;
 
                     case TagType.ValueString:
                         xwriter.WriteElementString("VALUE", curOp.Val);
@@ -1399,9 +1454,13 @@ namespace Wbem.CimXml
                         xwriter.WriteAttributeString("CLASSNAME", curOp.Val);
                         break;
 
-                    case TagType.ClassOriginAttributeString:
-                        xwriter.WriteAttributeString("CLASSORIGIN", curOp.Val);
+                    case TagType.ReferenceClass:
+                        xwriter.WriteAttributeString("REFERENCECLASS", curOp.Val);
                         break;
+
+					case TagType.ClassOriginAttributeString:
+						xwriter.WriteAttributeString("CLASSORIGIN", curOp.Val);
+						break;
 
                     case TagType.SuperClassAttributeString:
                         xwriter.WriteAttributeString("SUPERCLASS", curOp.Val);
